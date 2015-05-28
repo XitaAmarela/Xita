@@ -1,0 +1,80 @@
+body{
+	font-size: 10px	
+}
+
+.cabecalho{
+	border:none!important;
+	width: 100%;
+	
+}
+.gridcabecalho{
+	text-align: center;
+	width: 100%;
+	
+}
+.ui-widget-header {
+	background:white!important
+}
+
+.galeria{
+	
+}
+
+.esquerda{
+   text-align: center;
+	width: 15%!important;
+}
+.direita{
+    text-align: center;
+	width: 15%!important;
+}
+
+.conteudo{
+	border:none;
+}
+
+.rodape{
+	border:none;
+	text-align:center;
+}
+.menu{
+	text-align: center!important;
+	width: 100%;
+	
+}
+
+.centeredMenuBar.ui-menubar {
+    text-align: center;
+}
+
+.centeredMenuBar .ui-menu-list {
+    display: inline-block;
+}
+
+.principal {
+width: 100%;
+height: 100%;
+text-align: center;
+
+}
+.ui-selectonelistbox{
+	width:100%!important;
+    height: 100%!important;
+}
+.ui-selectlistbox-listcontainer{
+	width:100%!important;
+    height: 100%!important;
+}
+.ui-selectlistbox-item.ui-corner-all{
+	text-align:left;
+  width: 100%;
+	
+}
+.email {
+width: 70%;
+height: 100%;
+border-collapse: separate!important;
+  border-spacing: 2px!important;
+  border-color: grey!important;
+  overflow:auto;
+}

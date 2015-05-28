@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head>
+	<title>
+			<ui:insert name="titulo"> Xita Amarela </ui:insert>
+	</title>
+	<h:outputStylesheet library="css" name="template.css"/>
+</h:head> 
+<body> 
+		<p:growl id="growl" showDetail="false" sticky="true"/>
+	<p:layout fullPage="true">
+		<!-- Cabeçalho -->
+		<!-- <p:layoutUnit position="north" styleClass="cabecalho" >
+			<ui:include src="/WEB-INF/template/template-cabecalho.xhtml" />
+		</p:layoutUnit> -->
+		
+		<!-- esquerada -->
+		<!-- <p:layoutUnit position="west" styleClass="esquerda">
+		<ui:include src="/WEB-INF/template/template-esquerda.xhtml" />
+		</p:layoutUnit> -->
+			<!-- direita -->
+	<!-- 	<p:layoutUnit position="east" styleClass="direita">
+		<ui:include src="/WEB-INF/template/template-direita.xhtml" />
+		</p:layoutUnit> -->
+		
+		
+		<!-- Conteúdo -->
+		<p:layoutUnit position="center" styleClass="conteudo">
+		<p:messages showDetail="false" autoUpdate="true" closable="true"></p:messages>
+			<ui:insert name="conteudo"></ui:insert>
+		</p:layoutUnit>	
+		
+		<!-- Rodapé -->
+		<p:layoutUnit position="south" styleClass="rodape">
+		<ui:include src="/WEB-INF/template/template-rodape.xhtml" />
+		</p:layoutUnit>
+		
+	</p:layout>
+</body> 
+</html>
