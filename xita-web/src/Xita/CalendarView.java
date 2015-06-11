@@ -1,14 +1,16 @@
 package Xita;
 
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
- 
+
 import org.primefaces.context.RequestContext;
 import org.primefaces.event.SelectEvent;
+
+
  
 @ManagedBean
 public class CalendarView {
