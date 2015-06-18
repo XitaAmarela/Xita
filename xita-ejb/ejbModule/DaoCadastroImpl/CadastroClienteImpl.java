@@ -2,33 +2,41 @@ package DaoCadastroImpl;
 
 import java.util.List;
 
+import javax.ejb.EJB;
+
+import Dao.ClienteDAO;
 import DaoCadastro.CadastroCliente;
 import Model.Cliente;
 
 public class CadastroClienteImpl implements CadastroCliente {
+	@EJB
+	private ClienteDAO clienteDAO;
 
 	@Override
 	public Cliente cadastrarCliente(Cliente cliente) {
-		// TODO Auto-generated method stub
-		return null;
+		if (cliente.getNome() == null || cliente.getCpf_cnpj() == null
+				|| cliente.getEmail() == null || cliente.getEndereco() == null
+				|| cliente.getDataNascimento() == null
+				|| cliente.getSexo() == null) {
+			return null;
+		}
+		return clienteDAO.persist(cliente);
 	}
 
 	@Override
 	public List<Cliente> listarClientes() {
-		// TODO Auto-generated method stub
-		return null;
+		return clienteDAO.listAll();
 	}
 
 	@Override
 	public void removerCliente(Cliente cliente) {
-		// TODO Auto-generated method stub
-		
+		clienteDAO.removerCliente(cliente);
+
 	}
 
 	@Override
 	public void removerCliente(Long id) {
-		// TODO Auto-generated method stub
-		
+		clienteDAO.removerCliente(id);
 	}
 
 }
