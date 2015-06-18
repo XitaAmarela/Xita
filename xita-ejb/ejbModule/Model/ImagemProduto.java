@@ -26,6 +26,14 @@ public class ImagemProduto implements Serializable {
 	@OneToOne
 	private ProdutoOferta produto;
 
+	public ProdutoOferta getProduto() {
+		return produto;
+	}
+
+	public void setProduto(ProdutoOferta produto) {
+		this.produto = produto;
+	}
+
 	public Long getId() {
 		return id;
 	}
