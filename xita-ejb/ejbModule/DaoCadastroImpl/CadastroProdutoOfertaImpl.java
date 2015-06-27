@@ -37,7 +37,8 @@ public class CadastroProdutoOfertaImpl implements CadastroProdutoOferta {
 	public List<ProdutoOferta> listarProdutosOfertasPorOfertante(
 			Ofertante ofertante) {
 		// TODO LISTAR POR OFERTANTE
-		return null;
+		return produtoDAO.listarProdutoPorOfertante(ofertante.getId());
+		//return null;
 	}
 
 	@Override
