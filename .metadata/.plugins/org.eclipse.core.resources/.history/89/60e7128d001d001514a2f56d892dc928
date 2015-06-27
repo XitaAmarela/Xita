@@ -1,0 +1,34 @@
+package Xita;
+
+import java.util.Date;
+import java.util.UUID;
+
+public class Propaganda {
+	int id;
+	String titulo;
+	String tipo;
+	int estoque;
+	int vendidos;
+	String descricao;
+	Date Trestante;
+	double valor;
+	double desconto;
+	String getRandomBrand;
+	public int getRandomPrice;
+	boolean getRandomSoldState;
+
+	public Propaganda(String titulo, String tipo, int estoque, int vendidos,
+			String descricao, double valor, double desconto) {
+		this.titulo = titulo;
+		this.tipo = tipo;
+		this.estoque = estoque;
+		this.vendidos = vendidos;
+		this.descricao = descricao;
+		this.valor = valor;
+		this.desconto = desconto;
+		
+
+	}
+}
+
+	

@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel>
+			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
+				styleClass="gridcabecalho">
+
+				<h:panelGrid columns="1" style="text-align:justific">
+					<p:graphicImage value="../imagens/xitaAmarela.png"></p:graphicImage>
+
+					<h3 style="background: yellow;">Xita Amarela</h3>
+				</h:panelGrid>
+
+				<h:panelGrid columns="1" class="ui-grid-responsive">
+<h:panelGrid columns="2" class="ui-grid-responsive">
+					<h:outputLabel for="name" value="Total de Propagandas:" />
+					<p:inputText  id="name" required="true" />
+					</h:panelGrid>
+					
+	<h:panelGrid columns="4" class="ui-grid-responsive">
+					<p:outputLabel for="extended" value="Propagandas Restantes:" />
+					<p:inputText id="extended" required="true" />
+					<div class="ui-grid-row">
+						<div class="ui-grid-col-7">
+							<p:button value="Comprar" icon="ui-icon-plusthick">
+								<f:param name="productId" value="20" />
+							</p:button>
+						</div>
+					</div>
+</h:panelGrid>
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" sclass="ui-grid-responsive" style="float:right">
+					<p:button value="Configuração" icon="ui-icon-arrow-4-diag">
+						
+					</p:button>
+
+					<p:commandButton value="Sair"  />
+					<br>
+					
+					</br>
+					<h:outputLabel for="name" value="Bem Vindo!" />
+					<h:outputLabel for="name" value="Fulano" />
+				</h:panelGrid>
+
+    
+           
+			</h:panelGrid>
+
+		
+			<div class="ui-grid-row">
+				<div class="ui-grid-col-7">
+					<p:button value="Nova Propaganda" icon="ui-icon-plusthick">
+						<f:param name="productId" value="20" />
+					</p:button>
+				</div>
+			</div>
+
+			<h:panelGrid columns="" style="width:100%"
+				columnClasses="logo,detail">
+				<p:outputPanel>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:dataTable var="car" value="#{dataScrollerView.cars}">
+							<p:column headerText="Titulo">
+								<h:outputText value="#{car.titulo}" />
+							</p:column>
+
+							<p:column headerText="Figura">
+								<p:graphicImage value="../imagens/xitaAmarela.png"></p:graphicImage>
+							</p:column>
+
+							<p:column headerText="Tipo">
+								<h:outputText value="#{car.tipo}" />
+							</p:column>
+
+							<p:column headerText="Estoque">
+								<h:outputText value="#{car.estoque}" />
+							</p:column>
+
+							<p:column headerText="Vendidos">
+								<h:outputText value="#{car.vendidos}" />
+							</p:column>
+
+							<p:column headerText="Descrição">
+								<h:outputText value="#{car.descricao}" />
+							</p:column>
+
+							<p:column headerText="Estoque">
+								<h:outputText value="#{car.estoque}" />
+							</p:column>
+
+							<p:column headerText="T restante">
+								<h:outputText value="#{car.trestante}" />
+
+							</p:column>
+
+
+							<p:column headerText="Valor">
+								<h:outputText value="#{car.valor}" />
+
+							</p:column>
+
+
+							<p:column headerText="Desconto">
+								<h:outputText value="#{car.desconto}" />
+
+							</p:column>
+							<p:column headerText="">
+								<div class="ui-grid-row">
+									<div class="ui-grid-col-7">
+										<p:button value="Editar" icon="ui-icon-pencil">
+											<f:param name="productId" value="20" />
+										</p:button>
+
+									</div>
+								</div>
+
+								<div class="ui-grid-row">
+									<div class="ui-grid-col-7">
+										<p:button value="Excluir" icon="ui-icon-trash
+ ">
+											<f:param name="productId" value="20" />
+
+										</p:button>
+									</div>
+								</div>
+							</p:column>
+						</p:dataTable>
+					</h:panelGrid>
+				</p:outputPanel>
+			</h:panelGrid>
+		</p:panel>
+	</ui:define>
+
+</ui:composition>

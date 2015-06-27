@@ -1,0 +1,147 @@
+package Xita;
+
+import java.util.Date;
+import java.util.UUID;
+
+public class Propaganda {
+	int id;
+	
+	String titulo;
+	String tipo;
+	String estoque;
+	String vendidos;
+	String descrição;
+	Date Trestante;
+	double valor;
+	double desconto;
+	String getRandomBrand;
+	public int getRandomPrice;
+	boolean getRandomSoldState;
+
+	public Propaganda(String titulo, String tipo, String estoque, String vendidos,
+			String descrição, Date Trestante, double valor, double desconto,
+			String getRandomBrand, int getRandomPrice,
+			boolean getRandomSoldState) {
+		this.titulo = titulo;
+		;
+		this.tipo = tipo;
+		this.estoque = estoque;
+		this.vendidos = vendidos;
+		this.descrição = descrição;
+		this.Trestante = Trestante;
+		this.valor = valor;
+		this.desconto = desconto;
+		this.getRandomBrand = getRandomBrand;
+		this.getRandomPrice = getRandomPrice;
+		this.getRandomSoldState = getRandomSoldState;
+
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String Titulo) {
+		this.titulo = Titulo;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getEstoque() {
+		return estoque;
+	}
+
+	public void setEstoque(String estoque) {
+		this.estoque = estoque;
+	}
+
+	public Date getTrestante() {
+		return getTrestante();
+	}
+
+	public void setTrestante(Date Trestante) {
+		this.Trestante = Trestante;
+	}
+
+	public String getDescricao() {
+		return getDescricao();
+	}
+
+	public void setDescricao(String descricao) {
+		this.descrição = descricao;
+	}
+
+	public String getVendidos() {
+		return vendidos;
+	}
+
+	public void setVendidos(String vendidos) {
+		this.vendidos = vendidos;
+	}
+
+	public Double getValor() {
+		return valor;
+	}
+
+	public void setValor(Double valor) {
+		this.valor = valor;
+	}
+
+	public Double getDesconto() {
+		return desconto;
+	}
+
+	public void desconto(Double desconto) {
+		this.desconto = desconto;
+	}
+
+	public String getGetRandomBrand() {
+		return getRandomBrand;
+	}
+
+	public void setGetRandomBrand(String getRandomBrand) {
+		this.getRandomBrand = getRandomBrand;
+	}
+
+	public int getGetRandomPrice() {
+		return getRandomPrice;
+	}
+
+	public void setGetRandomPrice(int getRandomPrice) {
+		this.getRandomPrice = getRandomPrice;
+	}
+
+	public boolean isGetRandomSoldState() {
+		return getRandomSoldState;
+	}
+
+	public void setGetRandomSoldState(boolean getRandomSoldState) {
+		this.getRandomSoldState = getRandomSoldState;
+	}
+
+	public String getDescrição() {
+		return descrição;
+	}
+
+
+
+	public void setDescrição(String descrição) {
+		this.descrição = descrição;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+
+	public void setDesconto(double desconto) {
+		this.desconto = desconto;
+	}
+
+
+}

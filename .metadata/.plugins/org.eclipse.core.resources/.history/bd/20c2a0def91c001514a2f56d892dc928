@@ -1,0 +1,73 @@
+package Xita;
+
+import java.util.UUID;
+
+public class Car {
+	 String id;
+	 int year;
+	 String color;
+	 String getRandomBrand;
+	public int getRandomPrice;
+	boolean getRandomSoldState;
+
+	public Car(String getRandomId,String getRandomBrand, int getRandomYear, String getRandomColor,
+			 int getRandomPrice,
+			boolean getRandomSoldState) {
+		this.id =getRandomId  ; ;
+		this.year=getRandomYear;
+		this.color=getRandomColor;
+		this.getRandomBrand=getRandomBrand;
+		this.getRandomPrice=getRandomPrice;
+		this.getRandomSoldState=getRandomSoldState;
+
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public int getYear() {
+		return year;
+	}
+
+	public void setYear(int year) {
+		this.year = year;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public String getGetRandomBrand() {
+		return getRandomBrand;
+	}
+
+	public void setGetRandomBrand(String getRandomBrand) {
+		this.getRandomBrand = getRandomBrand;
+	}
+
+	public int getGetRandomPrice() {
+		return getRandomPrice;
+	}
+
+	public void setGetRandomPrice(int getRandomPrice) {
+		this.getRandomPrice = getRandomPrice;
+	}
+
+	public boolean isGetRandomSoldState() {
+		return getRandomSoldState;
+	}
+
+	public void setGetRandomSoldState(boolean getRandomSoldState) {
+		this.getRandomSoldState = getRandomSoldState;
+	}
+
+}

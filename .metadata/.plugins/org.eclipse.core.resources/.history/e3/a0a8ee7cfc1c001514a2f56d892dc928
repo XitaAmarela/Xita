@@ -1,0 +1,113 @@
+package Xita;
+
+import java.util.Date;
+import java.util.UUID;
+
+public class Car {
+	String titulo;
+	String tipo;
+	String estoque;
+	String vendidos;
+	String descrição;
+	Date Trestante;
+	double valor;
+	double desconto;
+	String getRandomBrand;
+	public int getRandomPrice;
+	boolean getRandomSoldState;
+
+	public Car(String getRandomId, String getRandomBrand, int getRandomYear,
+			String getRandomColor, int getRandomPrice,
+			boolean getRandomSoldState) {
+		this.titulo = getTitulo();
+		;
+		this.tipo = getTipo();
+		this.estoque = getEstoque();
+		this.vendidos = getVendidos();
+		this.descrição = getDescricao();
+		this.Trestante = getTrestante();
+		this.Valor = getValor();
+		this.desconto = getDesconto();
+		
+		this.getRandomBrand = getRandomBrand;
+		this.getRandomPrice = getRandomPrice;
+		this.getRandomSoldState = getRandomSoldState;
+
+	}
+
+	public String getTitulo() {
+		return titulo;
+	}
+
+	public void setTitulo(String Titulo) {
+		this.titulo = Titulo;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getEstoque() {
+		return estoque;
+	}
+
+	public void setEstoque(String estoque) {
+		this.estoque = estoque;
+	}
+
+	public Date getTrestante() {
+		return getTrestante();
+	}
+
+	public void setTrestante(Date Trestante) {
+		this.Trestante = Trestante;
+	}
+
+	
+	
+	public String getDescricao() {
+		return getDescricao();
+	}
+
+	public void setDescricao(String descricao) {
+		this.descrição = descricao;
+	}
+	
+
+	public String getVendidos() {
+		return vendidos;
+	}
+
+	public void setVendidos(String vendidos) {
+		this.vendidos = vendidos;
+	}
+
+	public String getGetRandomBrand() {
+		return getRandomBrand;
+	}
+
+	public void setGetRandomBrand(String getRandomBrand) {
+		this.getRandomBrand = getRandomBrand;
+	}
+
+	public int getGetRandomPrice() {
+		return getRandomPrice;
+	}
+
+	public void setGetRandomPrice(int getRandomPrice) {
+		this.getRandomPrice = getRandomPrice;
+	}
+
+	public boolean isGetRandomSoldState() {
+		return getRandomSoldState;
+	}
+
+	public void setGetRandomSoldState(boolean getRandomSoldState) {
+		this.getRandomSoldState = getRandomSoldState;
+	}
+
+}
