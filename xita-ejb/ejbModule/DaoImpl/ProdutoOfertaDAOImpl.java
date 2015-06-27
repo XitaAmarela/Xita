@@ -39,7 +39,7 @@ public class ProdutoOfertaDAOImpl implements ProdutoOfertaDAO{
 	}
 
 	@Override
-	public void removerProdutoOferta(Long id) {
+	public void removerProdutoOferta(ProdutoOferta produto) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
@@ -48,6 +49,23 @@ public class ProdutoOferta implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "compra_id")
 	private Compra compra;
+	
+
+	public Ofertante getOfertante() {
+		return ofertante;
+	}
+
+	public void setOfertante(Ofertante ofertante) {
+		this.ofertante = ofertante;
+	}
+
+	public Compra getCompra() {
+		return compra;
+	}
+
+	public void setCompra(Compra compra) {
+		this.compra = compra;
+	}
 
 	public String getTipoProduto() {
 		return tipoProduto;
