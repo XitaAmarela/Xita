@@ -23,6 +23,11 @@ public class SelectOneView {
         themes = service.getThemes();
     }
  
+    public String onTheme() {
+    	
+        return "detalhesProduto.xhtml?faces-redirect=true";
+    }
+ 
     public String getOption() {
         return option;
     }

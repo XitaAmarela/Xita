@@ -19,6 +19,12 @@ body{
 .galeria{
 	
 }
+.alignTop {  
+    margin-left: 50%;
+    width: 100%;
+height: 100%;
+text-align: center;
+} 
 
 .esquerda{
    text-align: center;
