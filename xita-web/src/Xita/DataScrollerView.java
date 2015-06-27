@@ -13,21 +13,21 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class DataScrollerView implements Serializable {
      
-    private List<Propaganda> cars;
+    private List<Produtos> cars;
          
     @ManagedProperty("#{carService}")
-    private PropagandaService service;
+    private ProdutoService service;
      
     @PostConstruct
     public void init() {
         cars = service.createCars(5);
     }
  
-    public List<Propaganda> getCars() {
+    public List<Produtos> getCars() {
         return cars;
     }
  
-    public void setService(PropagandaService service) {
+    public void setService(ProdutoService service) {
         this.service = service;
     }
 }

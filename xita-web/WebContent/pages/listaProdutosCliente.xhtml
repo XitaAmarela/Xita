@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel>
+			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
+				styleClass="gridcabecalho">
+
+				<h:panelGrid columns="1" style="text-align:justific">
+					<p:graphicImage value="../imagens/xitaAmarela.png"></p:graphicImage>
+
+					<h3 style="background: yellow;">Xita Amarela</h3>
+				</h:panelGrid>
+
+
+
+				<h:panelGrid columns="2" sclass="ui-grid-responsive"
+					style="float:right">
+					<p:button value="Configuração" icon="ui-icon-arrow-4-diag">
+
+					</p:button>
+
+					<p:commandButton value="Sair" />
+					<br> </br>
+					<br> </br>
+
+					<div>
+						<h:outputLabel for="name" value="Fulano" />
+						<h:outputLabel for="name" value="Bem Vindo!" />
+					</div>
+				</h:panelGrid>
+
+
+
+			</h:panelGrid>
+
+
+			
+			<h:panelGrid columns="" style="width:100%"
+				columnClasses="logo,detail">
+				<p:outputPanel>
+					<h:panelGrid columns="2" cellpadding="5">
+						<p:dataTable var="car" value="#{dataScrollerView.cars}">
+							<p:column headerText="Produto">
+								<h:outputText value="#{car.produto}" />
+							</p:column>
+
+							<p:column headerText="Imagem">
+								<p:graphicImage value="../imagens/xitaAmarela.png"></p:graphicImage>
+							</p:column>
+
+							<p:column headerText="Tipo">
+								<h:outputText value="#{car.tipo}" />
+							</p:column>
+
+
+							<p:column headerText="Descrição">
+								<h:outputText value="#{car.descricao}" />
+							</p:column>
+
+
+
+							<p:column headerText="Valor">
+								<h:outputText value="#{car.valor}" />
+
+							</p:column>
+
+
+							<p:column headerText="Quantidade">
+								<h:outputText value="#{car.quantidade}" />
+
+							</p:column>
+
+
+
+
+							<p:column headerText="Total">
+								<h:outputText value="#{car.total}" />
+
+							</p:column>
+
+							<p:column headerText="Situação">
+								<h:outputText value="#{car.situacao}" />
+
+							</p:column>
+
+
+
+
+							<p:column headerText="">
+								<div class="ui-grid-row">
+									<div class="ui-grid-col-7">
+										<p:button value="Excluir" icon="ui-icon-search">
+											<f:param name="productId" value="20" />
+
+										</p:button>
+									</div>
+								</div>
+							</p:column>
+
+						</p:dataTable>
+					</h:panelGrid>
+				</p:outputPanel>
+			</h:panelGrid>
+		</p:panel>
+	</ui:define>
+
+</ui:composition>
