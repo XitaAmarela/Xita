@@ -41,7 +41,16 @@ public class Cliente implements Serializable{
 	private String sexo;
 	@OneToMany (mappedBy="cliente")
 	private List<Compra> carrinho;
+	@NotNull
+	private String senha;
 	
+	
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 	public Long getId() {
 		return id;
 	}
