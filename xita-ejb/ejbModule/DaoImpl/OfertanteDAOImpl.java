@@ -32,16 +32,11 @@ public class OfertanteDAOImpl implements OfertanteDAO{
 	}
 
 	@Override
-	public Ofertante findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public Ofertante buscarPorId(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 
 	@Override
 	public List<Ofertante> buscarPorNome(String nome) {

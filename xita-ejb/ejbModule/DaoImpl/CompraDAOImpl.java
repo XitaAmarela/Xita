@@ -33,7 +33,7 @@ public class CompraDAOImpl implements CompraDAO {
 	}
 
 	@Override
-	public Compra findById(Long id) {
+	public Compra buscarPorId(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -32,7 +32,7 @@ public class ImagemProdutoDAOImpl implements ImagemProdutoDAO{
 	}
 
 	@Override
-	public ImagemProduto findById(Long id) {
+	public ImagemProduto buscarPorId(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

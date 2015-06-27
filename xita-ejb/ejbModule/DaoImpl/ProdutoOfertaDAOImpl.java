@@ -33,7 +33,7 @@ public class ProdutoOfertaDAOImpl implements ProdutoOfertaDAO{
 	}
 
 	@Override
-	public ProdutoOferta findById(Long id) {
+	public ProdutoOferta buscarPorId(Long id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
