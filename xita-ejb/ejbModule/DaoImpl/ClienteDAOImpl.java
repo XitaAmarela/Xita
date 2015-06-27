@@ -2,57 +2,63 @@ package DaoImpl;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+
 import Dao.ClienteDAO;
 import Model.Cliente;
 
+@Stateless
 public class ClienteDAOImpl implements ClienteDAO{
-
+	@PersistenceContext
+	private EntityManager em;
+	
 	@Override
 	public Cliente persist(Cliente t) {
-		// TODO Auto-generated method stub
-		return null;
+		if (t.getId() != null){
+			return em.merge(t);
+		}
+		em.persist(t);
+		return t;
 	}
 
 	@Override
 	public void delete(Long id) {
-		// TODO Auto-generated method stub
-		
+		Query query = em.createQuery("DELETE FROM Cliente c WHERE c.id = "+ id);
+		query.executeUpdate();
 	}
 
 	@Override
 	public void delete(Cliente t) {
-		// TODO Auto-generated method stub
+		em.remove(t);
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Cliente> listAll() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Cliente findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Query query = em.createQuery("SELECT c FROM Cliente c");
+		return (List<Cliente>) query.getResultList();
 	}
 
 	@Override
 	public Cliente buscarPorId(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return em.find(Cliente.class, id);
+		
 	}
+
 
 	@Override
 	public void removerCliente(Cliente cliente) {
-		// TODO Auto-generated method stub
-		
+		em.remove(cliente);		
 	}
 
 	@Override
 	public void removerCliente(Long id) {
-		// TODO Auto-generated method stub
-		
+		Query query = em.createQuery("DELETE FROM Cliente c WHERE c.id = "+id);
+		query.executeUpdate();
 	}
 
 }
