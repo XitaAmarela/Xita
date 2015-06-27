@@ -8,6 +8,6 @@ import Model.ProdutoOferta;
 public interface ProdutoOfertaDAO extends GenericaDAO<ProdutoOferta>{
 
 	void removerProdutoOferta(ProdutoOferta produto);
-	public List<ProdutoOferta> listarProdutoPorOfertante(Ofertante ofertante);
+	public List<ProdutoOferta> listarProdutoPorOfertante(Long id);
 	
 }
