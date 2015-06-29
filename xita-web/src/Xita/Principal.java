@@ -3,27 +3,32 @@ package Xita;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.ViewScoped;
 import javax.faces.event.ActionEvent;
 
+import Dao.ProdutoOfertaDAO;
 import Model.ProdutoOferta;
  
 
  
 @ManagedBean
+@ViewScoped
 public class Principal  {
      
     private String option;   
     private ProdutoOferta produto; 
     private List<ProdutoOferta> produtoOferta;
-    @ManagedProperty("#{themeService}")
-    private ProdutoService service;
+   
+   
+    @EJB
+    private ProdutoOfertaDAO produtoOfertaDAO;
      
     @PostConstruct
     public void init() {
-    	service = new ProdutoService();
-    	produtoOferta = service.getProdutosOfertas();
+    	produtoOferta = produtoOfertaDAO.listAll();
     }
     
     public String getOption() {
@@ -46,13 +51,6 @@ public class Principal  {
         return produtoOferta;
     }
  
-    public void setService(ProdutoService service) {
-        this.service = service;
-    }
-
-	public ProdutoService getService() {
-		return service;
-	}
 
 	public void setProduto(ProdutoOferta produto) {
 		this.produto = produto;

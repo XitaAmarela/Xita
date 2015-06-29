@@ -1,9 +1,10 @@
 package Xita;
 
+
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
 import Dao.ProdutoOfertaDAO;
@@ -16,12 +17,13 @@ import Model.ProdutoOferta;
 public class ProdutoService {
      
     private List<ProdutoOferta> produtosOfertas;
-    private ProdutoOfertaDAOImpl produtoOfertaDao;
+    
+    @EJB
+    private ProdutoOfertaDAO produtoOfertaDAO;
      
     @PostConstruct
     public void init() {
-    	produtoOfertaDao = new ProdutoOfertaDAOImpl();
-       produtosOfertas = produtoOfertaDao.listAll();
+       produtosOfertas = produtoOfertaDAO.listAll();
     }
 
 	public List<ProdutoOferta> getProdutosOfertas() {
@@ -32,12 +34,12 @@ public class ProdutoService {
 		this.produtosOfertas = produtosOfertas;
 	}
 
-	public ProdutoOfertaDAOImpl getProdutoOfertaDao() {
-		return produtoOfertaDao;
+	public ProdutoOfertaDAO getProdutoOfertaDAO() {
+		return produtoOfertaDAO;
 	}
 
-	public void setProdutoOfertaDao(ProdutoOfertaDAOImpl produtoOfertaDao) {
-		this.produtoOfertaDao = produtoOfertaDao;
+	public void setProdutoOfertaDAO(ProdutoOfertaDAO produtoOfertaDao) {
+		this.produtoOfertaDAO = produtoOfertaDao;
 	}
      
 }

@@ -17,9 +17,10 @@ public class CadastroClienteImpl implements CadastroCliente {
 		if (cliente.getNome() == null || cliente.getCpf_cnpj() == null
 				|| cliente.getEmail() == null || cliente.getEndereco() == null
 				|| cliente.getDataNascimento() == null
-				|| cliente.getSexo() == null) {
+				|| cliente.getSexo() == null || cliente.getSenha() == null) {
 			return null;
 		}
+		
 		return clienteDAO.persist(cliente);
 	}
 
@@ -38,5 +39,7 @@ public class CadastroClienteImpl implements CadastroCliente {
 	public void removerCliente(Long id) {
 		clienteDAO.removerCliente(id);
 	}
+	
+	
 
 }

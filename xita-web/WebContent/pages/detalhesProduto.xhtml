@@ -8,37 +8,60 @@
 
 	<ui:define name="conteudo">
 		<p:panel>
-			<h:panelGrid columns="2" border="1" class="ui-grid-responsive"
+		<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
 				styleClass="gridcabecalho">
+
 				<h:panelGrid columns="1" style="text-align:justific">
 					<p:graphicImage value="../imagens/xitaAmarela.png"></p:graphicImage>
+
 					<h3 style="background: yellow;">Xita Amarela</h3>
 				</h:panelGrid>
+
+				<h:panelGrid columns="1" class="ui-grid-responsive">
+
+					<p:galleria var="image" value="#{imagesView.images}" 
+						panelWidth="878" panelHeight="200" pashowCaption="true"
+						showFilmstrip="false" >
+						<p:graphicImage library="galeria" name="#{image}"
+							alt="Descrica da imagem #{imagem}" title="#{imagem}" width="100%"
+							height="100%"></p:graphicImage>
+					</p:galleria>
+
+				</h:panelGrid>
+
 				<h:panelGrid columns="1" style="text-align:right; width:100%">
+
 					<p:link value="Cadastre-se">
 						<f:param name="productId" value="10" />
 					</p:link>
+
 					<br />
 					<p:link value="Entrar">
 						<f:param name="productId" value="10" />
 					</p:link>
+
 					<br />
 					<br />
 					<br />
+
+
 					<p:commandButton value="2" icon="ui-icon-cart" type="button" />
 					<h:outputText value="Meu Carrinho" />
+
+
 				</h:panelGrid>
+
 			</h:panelGrid>
 			<div class="ui-grid ui-grid-responsive" align="center">
 				<div class="ui-grid-col-6" align="center">
-					<p:panelGrid columns="1" styleClass="alignTop" >
-						<h:form >
-							<p:panel >
-								<p:column >
-									<div class="ui-grid ui-grid-responsive" >
+					<p:panelGrid columns="1" styleClass="alignTop">
+						<h:form>
+							<p:panel>
+								<p:column>
+									<div class="ui-grid ui-grid-responsive">
 										<div class="ui-grid-row">
 											<div class="ui-grid-col">
-												<h:outputText value="#{propaganda.theme.displayName}" />
+												<h:outputText value="#{detalheProduto.produto.nomeProduto}" />
 											</div>
 										</div>
 										<div class="ui-grid-row">
@@ -49,28 +72,31 @@
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
 														<br />
-														<p:outputLabel value="Descricao breve" />
+														<p:outputLabel
+															value="#{detalheProduto.produto.tipoProduto}" />
 													</div>
 												</div>
 												<br />
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
-														<p:outputLabel value="valor" />
+														<p:outputLabel value="#{detalheProduto.produto.preco}" />
+													</div>
+													<div class="ui-grid-col-7">
+														<p:outputLabel
+															value="#{detalheProduto.produto.precoComDesconto}" />
 													</div>
 												</div>
 												<br />
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
-														<p:button value="Voltar" icon="ui-icon-arrow-4-diag">
-															<f:param name="productId" value="20" />
-														</p:button>
+														<p:commandButton action="principal" value="Voltar"></p:commandButton>
 													</div>
 												</div>
 												<br />
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
 														<p:outputLabel style="font-size: 8px"
-															value="tempo restante" />
+															value="Tempo restante" />
 													</div>
 												</div>
 												<div class="ui-grid-row">
@@ -78,17 +104,39 @@
 														<span class="ui-icon ui-icon-clock"> </span>
 													</div>
 													<div class="ui-grid-col-3">
-														<p:outputLabel value="14:30:20" />
+														<p:outputLabel
+															value="#{detalheProduto.produto.tempoPropaganda}" />
 													</div>
 												</div>
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-10">
-														<p:button value="Adicionar ao Carrinho" icon="ui-icon-arrow-4-diag">
+														<p:button value="Adicionar ao Carrinho"
+															icon="ui-icon-arrow-4-diag">
 															<f:param name="productId" value="20" />
 														</p:button>
 													</div>
 												</div>
 											</div>
+										</div>
+
+									</div>
+									<p:separator />
+									<div class="ui-grid-row">
+										<div class="ui-grid-col-3">
+											<p:outputLabel
+												value="#{detalheProduto.produto.descricao}" />
+										</div>
+									</div>
+									<div class="ui-grid-row">
+										<div class="ui-grid-col-3">
+											<p:outputLabel
+												value="#{detalheProduto.produto.descricao}" />
+										</div>
+									</div>
+									<div class="ui-grid-row">
+										<div class="ui-grid-col-3">
+											<p:outputLabel
+												value="#{detalheProduto.produto.descricao}" />
 										</div>
 									</div>
 									<p:separator />

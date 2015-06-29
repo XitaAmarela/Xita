@@ -8,7 +8,7 @@
 
 	<ui:define name="conteudo">
 		<p:panel>
-	<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
+			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
 				styleClass="gridcabecalho">
 
 				<h:panelGrid columns="1" style="text-align:justific">
@@ -19,9 +19,9 @@
 
 				<h:panelGrid columns="1" class="ui-grid-responsive">
 
-					<p:galleria var="image" value="#{imagesView.images}" 
+					<p:galleria var="image" value="#{imagesView.images}"
 						panelWidth="878" panelHeight="200" pashowCaption="true"
-						showFilmstrip="false" >
+						showFilmstrip="false">
 						<p:graphicImage library="galeria" name="#{image}"
 							alt="Descrica da imagem #{imagem}" title="#{imagem}" width="100%"
 							height="100%"></p:graphicImage>
@@ -30,15 +30,21 @@
 				</h:panelGrid>
 
 				<h:panelGrid columns="1" style="text-align:right; width:100%">
+					<p:commandLink value="Divulgue"
+						action="cadastroOfertante?faces-redirect=true">
 
-					<p:link value="Cadastre-se">
-						<f:param name="productId" value="10" />
-					</p:link>
+					</p:commandLink>
+					<br />
+					<br />
+					<p:commandLink value="Cadastre-se"
+						action="cadastroCliente?faces-redirect=true">
+
+					</p:commandLink>
 
 					<br />
-					<p:link value="Entrar">
-						<f:param name="productId" value="10" />
-					</p:link>
+					<p:commandLink value="Entrar">
+
+					</p:commandLink>
 
 					<br />
 					<br />
@@ -52,7 +58,7 @@
 				</h:panelGrid>
 
 			</h:panelGrid>
-			
+
 			<h:panelGrid columns="1" styleClass="menu">
 
 				<p:menubar styleClass="centeredMenuBar">
@@ -163,7 +169,7 @@
 													<div class="ui-grid-col-7">
 														<p:outputLabel value="#{p.preco}" />
 													</div>
-												
+
 													<div class="ui-grid-col-7">
 														<p:outputLabel value="#{p.precoComDesconto}" />
 													</div>
@@ -171,10 +177,9 @@
 												<br />
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
-														<p:commandButton 
-															action="detalhesProduto.xhtml"
-															value="Edit" >
-														<f:param name="id" value="#{p.id}" />
+														<p:commandButton action="detalhesProduto"
+															value="Ver Detalhes">
+															<f:param name="id" value="#{p.id}" />
 														</p:commandButton>
 													</div>
 												</div>

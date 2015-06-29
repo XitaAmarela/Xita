@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel>
+			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
+				styleClass="gridcabecalho">
+				<h:panelGrid columns="1" style="text-align:justific">
+					<p:graphicImage value="../imagens/xitaAmarela.png"></p:graphicImage>
+					<h3 style="background: yellow;">Xita Amarela</h3>
+				</h:panelGrid>
+			</h:panelGrid>
+
+			<div class="ui-grid ui-grid-responsive" align="right">
+				<h:panelGrid columns="2">
+					<h:panelGrid columns="1">
+						<div class="ui-grid-col-6">
+							<h:form>
+								<p:tabView>
+									<p:tab title="Pessoa Juridica">
+										<h:panelGrid id="gridJuridica" columns="1">
+											<h:panelGrid columns="3">
+												<h:panelGrid columns="1">
+													<h:outputLabel for="razao" value="Razão Social:"
+														style="font-weight:bold" />
+													<p:inputText id="razao" required="true" label="razao" />
+												</h:panelGrid>
+												<h:panelGrid columns="1">
+													<h:outputLabel for="fantasia" value="Nome Fantasia:"
+														style="font-weight:bold" />
+													<p:inputText id="fantasia" required="true" label="fantasia"
+														style="width:150px;" />
+												</h:panelGrid>
+												<h:panelGrid columns="1">
+													<h:outputLabel for="cnpj" value="CNPJ:"
+														style="font-weight:bold" />
+													<p:inputText id="cnpj" required="true" label="cnpj"
+														style="width:150px;" />
+												</h:panelGrid>
+											</h:panelGrid>
+											<h:panelGrid columns="3">
+												<h:panelGrid columns="1">
+													<p:outputLabel for="estadual" value="Inscrição estadual:"
+														style="font-weight:bold" />
+													<p:inputText id="estadual" required="true" label="estadual"
+														style="width:150px;" />
+												</h:panelGrid>
+												<h:panelGrid columns="1">
+													<h:outputLabel for="municipal" value="Inscrição municipal:"
+														style="font-weight:bold" />
+													<p:inputText id="municipal" required="true"
+														label="municipal" style="width:150px;" />
+												</h:panelGrid>
+
+											</h:panelGrid>
+											<h:panelGrid columns="4">
+												<h:panelGrid columns="1">
+													<h:outputLabel for="cep" value="CEP:"
+														style="font-weight:bold" />
+													<p:inputText id="cep" required="true" label="cep" />
+												</h:panelGrid>
+												<h:panelGrid columns="1">
+													<h:outputLabel for="endereco" value="Endereço:"
+														style="font-weight:bold" />
+													<p:selectOneMenu id="logradouro" value="">
+														<f:selectItems value="" />
+													</p:selectOneMenu>
+												</h:panelGrid>
+												<h:panelGrid columns="1">
+													<p:inputText id="endereco" required="true" label="endereco"
+														style="margin-top:15px" />
+												</h:panelGrid>
+												<h:panelGrid columns="1">
+													<h:outputLabel for="numero" value="Numero:"
+														style="font-weight:bold" />
+													<p:inputText id="numero" required="true" label="numero"
+														style="width:40px" />
+												</h:panelGrid>
+											</h:panelGrid>
+											<h:panelGrid columns="4">
+												<h:panelGrid columns="1">
+													<h:outputLabel for="comp" value="Complemento:"
+														style="font-weight:bold" />
+													<p:inputText id="comp" required="true" label="Complemento" />
+												</h:panelGrid>
+												<h:panelGrid columns="1">
+													<h:outputLabel for="bairro" value="Bairro:"
+														style="font-weight:bold" />
+													<p:inputText id="bairro" required="true" label="bairro" />
+												</h:panelGrid>
+												<h:panelGrid columns="1">
+													<h:outputLabel for="cidade" value="Cidade:"
+														style="font-weight:bold" />
+													<p:inputText id="cidade" required="true" label="cidade" />
+												</h:panelGrid>
+												<h:panelGrid columns="1">
+													<h:outputLabel for="estado" value="Estado:"
+														style="font-weight:bold" />
+													<p:selectOneMenu id="estado" value="">
+														<f:selectItems value="" />
+													</p:selectOneMenu>
+												</h:panelGrid>
+											</h:panelGrid>
+											<h:panelGrid columns="1">
+												<h:outputLabel for="referencia" value="Ponto de Referencia:"
+													style="font-weight:bold" />
+												<p:inputText id="referencia" required="true"
+													label="referencia" />
+											</h:panelGrid>
+										</h:panelGrid>
+									</p:tab>
+								</p:tabView>
+							</h:form>
+						</div>
+					</h:panelGrid>
+					<h:panelGrid columns="1">
+						<div class="ui-grid-col-6">
+							<h:form>
+								<p:tabView>
+									<p:tab title="Sobre Sua conta">
+										<h:panelGrid id="grid" columns="2">
+											<h:panelGrid columns="1">
+												<h:outputLabel for="telFixo" value="Seu telefone fixo:"
+													style="font-weight:bold" />
+												<h:panelGrid columns="3">
+													<p:inputText id="DDDTelFixo" required="true"
+														label="DDDTelFixo" style="width:20px" />
+													<h:outputLabel for="DDDTelFixo" value="-"
+														style="font-weight:bold" />
+													<p:inputText id="telFixo" required="true" label="telFixo" />
+												</h:panelGrid>
+											</h:panelGrid>
+											<h:panelGrid columns="1">
+												<h:outputLabel for="telFixo" value="Seu Celular:"
+													style="font-weight:bold" />
+												<h:panelGrid columns="3">
+													<p:inputText id="DDDTelCel" required="true"
+														label="DDDTelCel" style="width:20px" />
+													<h:outputLabel for="DDDTelCel" value="-"
+														style="font-weight:bold" />
+													<p:inputText id="telCel" required="true" label="telCel" />
+												</h:panelGrid>
+											</h:panelGrid>
+											<h:panelGrid columns="1">
+												<h:outputLabel for="email" value="E-mail:"
+													style="font-weight:bold" />
+												<p:inputText id="email" required="true" label="email"
+													style="width:173px;margin-left:3px" />
+
+											</h:panelGrid>
+
+											<h:panelGrid columns="1"
+												style="width: 180px!important;margin-left:5px;margin-top:15px;">
+												<h:outputLabel for="email"
+													value="A confirmação e o acompanhamento de sua conta serão enviados para seu e-mail."
+													style="font-weight:bold;font-size: 8px;" />
+											</h:panelGrid>
+											<h:panelGrid columns="1">
+												<h:outputLabel for="senha" value="Cadastre sua senha:"
+													style="font-weight:bold" />
+												<p:inputText id="senha" required="true" label="senha"
+													style="width:173px;margin-left:3px" />
+												<br />
+											</h:panelGrid>
+										</h:panelGrid>
+										<h:panelGrid columns="2">
+											<p:selectBooleanCheckbox value="" />
+											<h:outputText
+												value="Quero receber por e-mail, ofertas e novidades" />
+										</h:panelGrid>
+										<br />
+										<br />
+										<h:panelGrid columns="1">
+											<h:outputLabel
+												value="Ao Clicar em continuar, você concorda com nossa">
+												<h:commandLink value="Politica de Privacidade" />
+											</h:outputLabel>
+
+										</h:panelGrid>
+										<br />
+										<br />
+										<br />
+									</p:tab>
+								</p:tabView>
+
+							</h:form>
+						</div>
+					</h:panelGrid>
+				</h:panelGrid>
+				<dir style="float: right">
+					<p:commandButton value="Continuar"></p:commandButton>
+				</dir>
+			</div>
+
+		</p:panel>
+	</ui:define>
+
+</ui:composition>

@@ -1,8 +1,13 @@
 package Xita;
 
+import java.io.Serializable;
+
+import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
+import javax.faces.bean.SessionScoped;
 
+import Dao.ProdutoOfertaDAO;
 import Model.ProdutoOferta;
  
 
@@ -11,19 +16,22 @@ import Model.ProdutoOferta;
 public class DetalheProduto  {
      
   
-    @ManagedProperty(value="#{param.id}")
+ 
+	@ManagedProperty(value="#{param.id}")
     private int id; 
     private ProdutoOferta produto; 
-    private ProdutoService service;
+    @EJB
+    private ProdutoOfertaDAO produtoOfertaDAO;
+     
     
     
     public ProdutoOferta getProduto() {
-		return produto;
+    	
+		return produtoOfertaDAO.buscarPorId(new Long(id));
 	}
 
 
 	public void setProduto(ProdutoOferta produto) {
-		
 		this.produto = produto;
 	}
 	
