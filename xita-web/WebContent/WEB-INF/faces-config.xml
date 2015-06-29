@@ -7,12 +7,12 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
-			<from-outcome>listagemClientes</from-outcome>
-			<to-view-id>/pages/listagemClientes.xhtml</to-view-id>
+			<from-outcome>principal</from-outcome>
+			<to-view-id>/pages/principal.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-outcome>listagemVeiculos</from-outcome>
-			<to-view-id>/pages/listagemVeiculos.xhtml</to-view-id>
+			<from-outcome>detalhesProduto</from-outcome>
+			<to-view-id>/pages/detalhesProduto.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>listagemMarcas</from-outcome>

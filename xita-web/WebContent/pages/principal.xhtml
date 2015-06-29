@@ -8,7 +8,7 @@
 
 	<ui:define name="conteudo">
 		<p:panel>
-			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
+	<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
 				styleClass="gridcabecalho">
 
 				<h:panelGrid columns="1" style="text-align:justific">
@@ -19,9 +19,9 @@
 
 				<h:panelGrid columns="1" class="ui-grid-responsive">
 
-					<p:galleria var="image" value="#{imagesView.images}"
+					<p:galleria var="image" value="#{imagesView.images}" 
 						panelWidth="878" panelHeight="200" pashowCaption="true"
-						showFilmstrip="false">
+						showFilmstrip="false" >
 						<p:graphicImage library="galeria" name="#{image}"
 							alt="Descrica da imagem #{imagem}" title="#{imagem}" width="100%"
 							height="100%"></p:graphicImage>
@@ -51,8 +51,8 @@
 
 				</h:panelGrid>
 
-				<p:growl id="growlA" life="2000" />
 			</h:panelGrid>
+			
 			<h:panelGrid columns="1" styleClass="menu">
 
 				<p:menubar styleClass="centeredMenuBar">
@@ -128,22 +128,22 @@
 				<div class="ui-grid-col-6" align="center">
 
 					<h:panelGrid columns="1" styleClass="principal">
-		<h:form styleClass="principal">
+						<h:form styleClass="principal">
 
-						<p:selectOneListbox id="advanced" value="#{selectOneView.theme}"
-							converter="themeConverter" var="t" filter="true"
-							styleClass="principal" filterMatchMode="contains">
-							<f:selectItems value="#{selectOneView.themes}" var="theme"
-								itemLabel="#{theme.displayName}" itemValue="#{theme}" />
-							
+							<p:selectOneListbox id="advanced" value="#{principal.produto}"
+								converter="produtoConverter" var="p" filter="true"
+								styleClass="principal" filterMatchMode="contains">
+								<f:selectItems value="#{principal.produtoOferta}" var="prod"
+									itemLabel="#{prod.nomeProduto}" itemValue="#{prod}" />
+
 								<p:column>
-						
+
 									<p:separator />
 									<div class="ui-grid ui-grid-responsive">
 
 										<div class="ui-grid-row">
 											<div class="ui-grid-col">
-												<h:outputText value="#{t.displayName}" />
+												<h:outputText value="#{p.nomeProduto}" />
 											</div>
 										</div>
 										<div class="ui-grid-row">
@@ -155,20 +155,27 @@
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
 														<br />
-														<p:outputLabel value="Descricao breve" />
+														<p:outputLabel value="#{p.tipoProduto}" />
 													</div>
 												</div>
 												<br />
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
-														<p:outputLabel value="valor" />
+														<p:outputLabel value="#{p.preco}" />
+													</div>
+												
+													<div class="ui-grid-col-7">
+														<p:outputLabel value="#{p.precoComDesconto}" />
 													</div>
 												</div>
 												<br />
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
-													 <h:commandLink value="Ver Detalhes"
-                     action="#{selectOneView.onTheme()}" />
+														<p:commandButton 
+															action="detalhesProduto.xhtml"
+															value="Edit" >
+														<f:param name="id" value="#{p.id}" />
+														</p:commandButton>
 													</div>
 												</div>
 												<br />
@@ -183,7 +190,7 @@
 														<span class="ui-icon ui-icon-clock"> </span>
 													</div>
 													<div class="ui-grid-col-3">
-														<p:outputLabel value="14:30:20" />
+														<p:outputLabel value="#{p.tempoPropaganda}" />
 
 													</div>
 
@@ -192,11 +199,11 @@
 										</div>
 									</div>
 									<p:separator />
-								
+
 								</p:column>
-							
-						</p:selectOneListbox>
-							</h:form>
+
+							</p:selectOneListbox>
+						</h:form>
 					</h:panelGrid>
 
 				</div>

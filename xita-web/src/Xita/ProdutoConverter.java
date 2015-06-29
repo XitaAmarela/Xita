@@ -6,17 +6,19 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.ConverterException;
 import javax.faces.convert.FacesConverter;
+
+import Model.ProdutoOferta;
  
 
  
-@FacesConverter("themeConverter")
-public class ThemeConverter implements Converter {
+@FacesConverter("produtoConverter")
+public class ProdutoConverter implements Converter {
  
     public Object getAsObject(FacesContext fc, UIComponent uic, String value) {
         if(value != null && value.trim().length() > 0) {
             try {
-                ThemeService service = (ThemeService) fc.getExternalContext().getApplicationMap().get("themeService");
-                return service.getThemes().get(Integer.parseInt(value));
+                ProdutoService service = (ProdutoService) fc.getExternalContext().getApplicationMap().get("produtoService");
+                return service.getProdutosOfertas().get(Integer.parseInt(value));
             } catch(NumberFormatException e) {
                 throw new ConverterException(new FacesMessage(FacesMessage.SEVERITY_ERROR, "Conversion Error", "Not a valid theme."));
             }
@@ -28,7 +30,7 @@ public class ThemeConverter implements Converter {
  
     public String getAsString(FacesContext fc, UIComponent uic, Object object) {
         if(object != null) {
-            return String.valueOf(((Theme) object).getId());
+            return String.valueOf(((ProdutoOferta) object).getId());
         }
         else {
             return null;
