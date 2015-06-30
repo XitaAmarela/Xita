@@ -8,33 +8,35 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import Dao.ClienteDAO;
+import Dao.OfertanteDAO;
 import DaoCadastro.CadastroCliente;
 import DaoCadastroImpl.CadastroClienteImpl;
 import Model.Cliente;
+import Model.Ofertante;
 
 import java.io.Serializable;
 
-@Named("cadastroClienteMB")
+@Named("cadastroOfertanteMB")
 @ConversationScoped
-public class CadastroClienteMB implements Serializable {
+public class CadastroOfertanteMB implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -1388746270970762723L;
-	private Cliente cliente;
+	private Ofertante ofertante;
 	@EJB
-	private ClienteDAO cadastroCliente;
+	private OfertanteDAO cadastroOfertante;
 	@Inject
 	private Conversation conversation;
 	
 	@PostConstruct
 	public void init(){
-		cliente = new Cliente();
+		ofertante = new Ofertante();
 	}
 
 	public String salvar(){
-		cadastroCliente.cadastrarCliente(cliente);
+		cadastroOfertante.cadastrarOfertante(ofertante);
 		if (!conversation.isTransient()) {
 			conversation.end();
 		}
@@ -48,15 +50,15 @@ public class CadastroClienteMB implements Serializable {
 		return "principal?faces-redirect=true";
 	}
 
-	public Cliente getCliente() {
-		return cliente;
+	public Ofertante getOfertante() {
+		return ofertante;
 	}
 
-	public void setCliente(Cliente cliente) {
-		if (cliente.getId() != null && conversation.isTransient()) {
+	public void setOfertante(Ofertante ofertante) {
+		if (ofertante.getId() != null && conversation.isTransient()) {
 			conversation.begin();
 		}
-		this.cliente = cliente;
+		this.ofertante = ofertante;
 	}
 
 	public Conversation getConversation() {

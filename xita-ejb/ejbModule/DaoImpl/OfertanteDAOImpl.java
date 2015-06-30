@@ -68,5 +68,14 @@ public class OfertanteDAOImpl implements OfertanteDAO{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public Ofertante cadastrarOfertante(Ofertante ofertante) {
+		if (ofertante.getCnpj() == null || ofertante.getNome() == null
+				|| ofertante.getEmail() == null
+				|| ofertante.getEndereco() == null){
+			return null;
+		}
+			return this.persist(ofertante);
+	}
 
 }

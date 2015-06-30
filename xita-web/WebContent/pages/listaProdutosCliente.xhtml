@@ -41,51 +41,51 @@
 
 
 			
-			<h:panelGrid columns="" style="width:100%"
+			<h:panelGrid columns="" style="width:100%;text-align:center"
 				columnClasses="logo,detail">
 				<p:outputPanel>
 					<h:panelGrid columns="2" cellpadding="5">
-						<p:dataTable var="car" value="#{dataScrollerView.cars}">
+						<p:dataTable var="prod" value="#{produtoService.produtosOfertas}">
 							<p:column headerText="Produto">
-								<h:outputText value="#{car.produto}" />
+								<h:outputText value="#{prod.nomeProduto}" />
 							</p:column>
 
 							<p:column headerText="Imagem">
-								<p:graphicImage value="../imagens/xitaAmarela.png"></p:graphicImage>
+								<p:graphicImage value="../imagens/xitaAmarela.png" height="50px" width="50px"></p:graphicImage>
 							</p:column>
 
 							<p:column headerText="Tipo">
-								<h:outputText value="#{car.tipo}" />
+								<h:outputText value="#{prod.tipoProduto}" />
 							</p:column>
 
 
 							<p:column headerText="Descrição">
-								<h:outputText value="#{car.descricao}" />
+								<h:outputText value="#{prod.descricao}" />
 							</p:column>
 
 
 
 							<p:column headerText="Valor">
-								<h:outputText value="#{car.valor}" />
+								<h:outputText value="#{prod.preco}" />
 
 							</p:column>
 
 
 							<p:column headerText="Quantidade">
-								<h:outputText value="#{car.quantidade}" />
+								<h:outputText value="#{prod.quantidadeEmEstoque}" />
 
 							</p:column>
 
 
 
 
-							<p:column headerText="Total">
-								<h:outputText value="#{car.total}" />
+							<p:column headerText="Vendido">
+								<h:outputText value="#{prod.quantidadeVendidos}" />
 
 							</p:column>
 
 							<p:column headerText="Situação">
-								<h:outputText value="#{car.situacao}" />
+								<h:outputText value="" />
 
 							</p:column>
 

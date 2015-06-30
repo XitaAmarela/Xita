@@ -39,6 +39,36 @@ public class CadastroClienteImpl implements CadastroCliente {
 	public void removerCliente(Long id) {
 		clienteDAO.removerCliente(id);
 	}
+
+	@Override
+	public Cliente persist(Cliente t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void delete(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Cliente t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Cliente> listAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Cliente buscarPorId(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 

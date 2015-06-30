@@ -61,4 +61,16 @@ public class ClienteDAOImpl implements ClienteDAO{
 		query.executeUpdate();
 	}
 
+	@Override
+	public Cliente cadastrarCliente(Cliente cliente) {
+		if (cliente.getNome() == null || cliente.getCpf_cnpj() == null
+				|| cliente.getEmail() == null || cliente.getEndereco() == null
+				|| cliente.getDataNascimento() == null
+				|| cliente.getSexo() == null || cliente.getSenha() == null) {
+			return null;
+		}
+		
+		return this.persist(cliente);
+	}
+
 }
