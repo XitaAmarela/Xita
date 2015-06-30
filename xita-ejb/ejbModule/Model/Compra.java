@@ -8,8 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
 
@@ -28,8 +29,12 @@ public class Compra implements Serializable {
 	@JoinColumn(name = "cliente_id")
 	@NotNull
 	private Cliente cliente;
-	@OneToMany (mappedBy="compra")
-	@NotNull
+	//@OneToMany (mappedBy="compra")
+	//@NotNull
+	//private List<ProdutoOferta> produto;
+	
+	@ManyToMany
+	@JoinTable(name="compra", joinColumns={@JoinColumn(name="compra_id")}, inverseJoinColumns={@JoinColumn(name="produto_id")})
 	private List<ProdutoOferta> produto;
 
 	public Long getId() {

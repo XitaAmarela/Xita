@@ -5,6 +5,8 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.validation.constraints.NotNull;
+
+import Enums.enumTipoProduto;
 
 @Entity
 public class ProdutoOferta implements Serializable {
@@ -30,8 +34,9 @@ public class ProdutoOferta implements Serializable {
 	private String nomeProduto;
 	@NotNull
 	private String descricao;
+	@Enumerated(EnumType.STRING)
 	@NotNull
-	private String tipoProduto;
+	private enumTipoProduto tipoProduto;
 	@NotNull
 	private int quantidadeEmEstoque;
 	private int quantidadeVendidos;
@@ -45,12 +50,10 @@ public class ProdutoOferta implements Serializable {
 	@JoinColumn(name = "ofertante_id")
 	@NotNull
 	private Ofertante ofertante;
-
-	@ManyToOne
+	/*@ManyToOne
 	@JoinColumn(name = "compra_id")
 	private Compra compra;
-	
-
+*/
 	public Ofertante getOfertante() {
 		return ofertante;
 	}
@@ -59,21 +62,13 @@ public class ProdutoOferta implements Serializable {
 		this.ofertante = ofertante;
 	}
 
-	public Compra getCompra() {
+	/*public Compra getCompra() {
 		return compra;
 	}
 
 	public void setCompra(Compra compra) {
 		this.compra = compra;
-	}
-
-	public String getTipoProduto() {
-		return tipoProduto;
-	}
-
-	public void setTipoProduto(String tipoProduto) {
-		this.tipoProduto = tipoProduto;
-	}
+	}*/
 
 	public int getQuantidadeEmEstoque() {
 		return quantidadeEmEstoque;
@@ -147,6 +142,14 @@ public class ProdutoOferta implements Serializable {
 		// TODO verificar se o calculo esta correto
 		// precoComDesconto.add(getPreco().multiply((getPorcentagemDesconto().divide(porc))));
 		this.precoComDesconto = precoComDesconto;
+	}
+
+	public enumTipoProduto getTipoProduto() {
+		return tipoProduto;
+	}
+
+	public void setTipoProduto(enumTipoProduto tipoProduto) {
+		this.tipoProduto = tipoProduto;
 	}
 
 }
