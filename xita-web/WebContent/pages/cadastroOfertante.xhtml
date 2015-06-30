@@ -5,7 +5,6 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template-principal.xhtml">
-
 	<ui:define name="conteudo">
 		<p:panel>
 			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
@@ -15,13 +14,11 @@
 					<h3 style="background: yellow;">Xita Amarela</h3>
 				</h:panelGrid>
 			</h:panelGrid>
-
 			<div class="ui-grid ui-grid-responsive" align="right">
-			<h:form>
-				<h:panelGrid columns="2">
-					<h:panelGrid columns="1">
-						<div class="ui-grid-col-6">
-							
+				<h:form>
+					<h:panelGrid columns="2">
+						<h:panelGrid columns="1">
+							<div class="ui-grid-col-6">
 								<p:tabView>
 									<p:tab title="Pessoa Juridica">
 										<h:panelGrid id="gridJuridica" columns="1">
@@ -63,55 +60,46 @@
 														value="#{cadastroOfertanteMB.ofertante.inscricaoMunicipal}"
 														label="municipal" style="width:150px;" />
 												</h:panelGrid>
-
 											</h:panelGrid>
-
 											<h:panelGrid columns="1">
 												<h:outputLabel for="endereco" value="Endereço:"
 													style="font-weight:bold" />
 												<p:inputText id="endereco" required="true" label="endereco"
-													value="#{cadastroOfertanteMB.ofertante.endereco}"
-													/>
-
+													value="#{cadastroOfertanteMB.ofertante.endereco}" />
 											</h:panelGrid>
-										
-											
 										</h:panelGrid>
+										<br />
+										<br />
 									</p:tab>
 								</p:tabView>
-						
-						</div>
-					</h:panelGrid>
-					<h:panelGrid columns="1">
-						<div class="ui-grid-col-6">
-							
+							</div>
+						</h:panelGrid>
+						<h:panelGrid columns="1">
+							<div class="ui-grid-col-6">
 								<p:tabView>
 									<p:tab title="Sobre Sua conta">
 										<h:panelGrid id="grid" columns="2">
 											<h:panelGrid columns="1">
 												<h:outputLabel for="telFixo" value="Seu telefone fixo:"
 													style="font-weight:bold" />
-												
-													<p:inputText id="DDDTelFixo" required="true" value="#{cadastroOfertanteMB.ofertante.telefone}"
-														label="DDDTelFixo"  />
-													
-												
+												<p:inputText id="DDDTelFixo" required="true"
+													value="#{cadastroOfertanteMB.ofertante.telefone}"
+													label="DDDTelFixo" />
 											</h:panelGrid>
 											<h:panelGrid columns="1">
 												<h:outputLabel for="telFixo" value="Seu Celular:"
 													style="font-weight:bold" />
-												
-													<p:inputText id="telCel" required="true" label="telCel" value="#{cadastroOfertanteMB.ofertante.telefoneCelular}" />
-												
+												<p:inputText id="telCel" required="true" label="telCel"
+													value="#{cadastroOfertanteMB.ofertante.telefoneCelular}" />
 											</h:panelGrid>
 											<h:panelGrid columns="1">
 												<h:outputLabel for="email" value="E-mail:"
 													style="font-weight:bold" />
-												<p:inputText id="email" required="true" label="email" value="#{cadastroOfertanteMB.ofertante.email}"
+												<p:inputText id="email" required="true" label="email"
+													value="#{cadastroOfertanteMB.ofertante.email}"
 													style="width:173px;margin-left:3px" />
 
 											</h:panelGrid>
-
 											<h:panelGrid columns="1"
 												style="width: 180px!important;margin-left:5px;margin-top:15px;">
 												<h:outputLabel for="email"
@@ -121,35 +109,27 @@
 											<h:panelGrid columns="1">
 												<h:outputLabel for="senha" value="Cadastre sua senha:"
 													style="font-weight:bold" />
-												<p:inputText id="senha" required="true" label="senha" value="#{cadastroOfertanteMB.ofertante.senha}"
+												<p:inputText id="senha" required="true" label="senha"
+													value="#{cadastroOfertanteMB.ofertante.senha}"
 													style="width:173px;margin-left:3px" />
 												<br />
 											</h:panelGrid>
 										</h:panelGrid>
-										
-										<br />
-										<br />
 										<h:panelGrid columns="1">
 											<h:outputLabel
-												value="Ao Clicar em continuar, você concorda com nossa">
+												value="Ao clicar em continuar, você concorda com nossa">
 												<h:commandLink value="Politica de Privacidade" />
 											</h:outputLabel>
-
 										</h:panelGrid>
-										<br />
-										<br />
-										<br />
 									</p:tab>
 								</p:tabView>
-
-							
-						</div>
+							</div>
+						</h:panelGrid>
 					</h:panelGrid>
-				</h:panelGrid>
-				
-				<dir style="float: right">
-					<p:commandButton value="Continuar" action="#{cadastroOfertanteMB.salvar()}"></p:commandButton>
-				</dir>
+					<dir style="float: right">
+						<p:commandButton value="Continuar"
+							action="#{cadastroOfertanteMB.salvar()}"></p:commandButton>
+					</dir>
 				</h:form>
 			</div>
 

@@ -31,14 +31,21 @@
 
 				<h:panelGrid columns="1" style="text-align:right; width:100%">
 
-					<p:link value="Cadastre-se">
-						<f:param name="productId" value="10" />
-					</p:link>
+					<p:commandLink value="Divulgue"
+						action="cadastroOfertante?faces-redirect=true">
+
+					</p:commandLink>
+					<br />
+					<br />
+					<p:commandLink value="Cadastre-se"
+						action="cadastroCliente?faces-redirect=true">
+
+					</p:commandLink>
 
 					<br />
-					<p:link value="Entrar">
-						<f:param name="productId" value="10" />
-					</p:link>
+					<p:commandLink value="Entrar">
+
+					</p:commandLink>
 
 					<br />
 					<br />

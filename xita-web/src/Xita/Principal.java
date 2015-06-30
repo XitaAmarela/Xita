@@ -11,46 +11,66 @@ import javax.faces.event.ActionEvent;
 
 import Dao.ProdutoOfertaDAO;
 import Model.ProdutoOferta;
- 
 
- 
 @ManagedBean
 @ViewScoped
-public class Principal  {
-     
-    private String option;   
-    private ProdutoOferta produto; 
-    private List<ProdutoOferta> produtoOferta;
-   
-   
-    @EJB
-    private ProdutoOfertaDAO produtoOfertaDAO;
-     
-    @PostConstruct
-    public void init() {
-    	produtoOferta = produtoOfertaDAO.listAll();
-    }
-    
-    public String getOption() {
-        return option;
-    }
- 
-    public void setOption(String option) {
-        this.option = option;
-    }
- 
-    public ProdutoOferta getProduto() {
-        return produto;
-    }
- 
-    public void setTheme(ProdutoOferta produto) {
-        this.produto = produto;
-    }
- 
-    public List<ProdutoOferta> getProdutoOferta() {
-        return produtoOferta;
-    }
- 
+public class Principal {
+
+	private String option;
+	private ProdutoOferta produto;
+	private List<ProdutoOferta> produtoOferta;
+
+	@EJB
+	private ProdutoOfertaDAO produtoOfertaDAO;
+
+	@PostConstruct
+	public void init() {
+		produtoOferta = produtoOfertaDAO.listAll();
+	}
+
+	public void todasOfertas() {
+
+	}
+
+	public void restaurantesBares() {
+
+	}
+
+	public void saudeBeleza() {
+
+	}
+
+	public void fitness() {
+
+	}
+
+	public void cursoAulas() {
+
+	}
+
+	public void quemSomos() {
+
+	}
+
+	public String getOption() {
+		return option;
+	}
+
+	public void setOption(String option) {
+		this.option = option;
+	}
+
+	public ProdutoOferta getProduto() {
+		return produto;
+	}
+
+	public void setTheme(ProdutoOferta produto) {
+		this.produto = produto;
+	}
+
+	public List<ProdutoOferta> getProdutoOferta() {
+		return produtoOferta;
+	}
 
 	public void setProduto(ProdutoOferta produto) {
 		this.produto = produto;

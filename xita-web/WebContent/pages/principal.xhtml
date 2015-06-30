@@ -58,46 +58,19 @@
 				</h:panelGrid>
 
 			</h:panelGrid>
+			<h:form>
+				<h:panelGrid columns="1" styleClass="menu">
 
-			<h:panelGrid columns="1" styleClass="menu">
-
-				<p:menubar styleClass="centeredMenuBar">
-					<p:submenu label="Todas as ofertas" icon="ui-icon-document">
-						<p:submenu label="New" icon="ui-icon-contact">
-
-						</p:submenu>
-
-					</p:submenu>
-					<p:submenu label="Restaurantes e bares" icon="ui-icon-document">
-						<p:submenu label="New" icon="ui-icon-contact">
-
-						</p:submenu>
-
-					</p:submenu>
-					<p:submenu label="Saúde e beleza" icon="ui-icon-document">
-
-
-					</p:submenu>
-					<p:submenu label="Fitness" icon="ui-icon-document">
-
-
-					</p:submenu>
-					<p:submenu label="Cursos e aulas" icon="ui-icon-document">
-
-
-					</p:submenu>
-					<p:submenu label="Classificados" icon="ui-icon-document">
-
-
-					</p:submenu>
-					<p:submenu label="Quem somos" icon="ui-icon-document">
-
-
-					</p:submenu>
-				</p:menubar>
-
-			</h:panelGrid>
-
+					<p:menubar styleClass="centeredMenuBar">
+						<p:menuitem value="|   Todas as ofestas   |" url="#" />
+						<p:menuitem value="|   Restaurantes e Bares   |" url="#" />
+						<p:menuitem value="|   Saúde e Beleza   |" url="#" />
+						<p:menuitem value="|   Fitness   |" url="#" />
+						<p:menuitem value="|  Curses e Aulas   |" url="#" />
+						<p:menuitem value="|   Quem somos   |" url="#" />
+					</p:menubar>
+				</h:panelGrid>
+			</h:form>
 
 
 
@@ -196,27 +169,20 @@
 													</div>
 													<div class="ui-grid-col-3">
 														<p:outputLabel value="#{p.tempoPropaganda}" />
-
 													</div>
-
 												</div>
 											</div>
 										</div>
 									</div>
 									<p:separator />
-
 								</p:column>
-
 							</p:selectOneListbox>
 						</h:form>
 					</h:panelGrid>
-
 				</div>
 				<div class="ui-grid-col-3" align="center">
-
 					<br /> <br />
 					<p:calendar id="inline" value="#{calendarView.date1}" mode="inline" />
-
 					<br /> <br />
 					<h:panelGrid columns="1" styleClass="email">
 						<p:panel style="height:100%">
@@ -243,7 +209,6 @@
 								<br />
 							</h:form>
 						</p:panel>
-
 					</h:panelGrid>
 				</div>
 			</div>
