@@ -29,15 +29,19 @@ public class validarLogin implements Serializable {
 	}
 
 	public String validar() {
-
+		
 		idClienteSessao = validarCliente.validarCliente(c);		
-		if (!conversation.isTransient()) {
-			conversation.end();
-		}
+		
 		if (idClienteSessao!=-1) {
 			return "principal?faces-redirect=true";
 		} else {
 			return "destalhesProduto?faces-redirect=false";
+		}
+	}
+	
+	public void desconectarConta(){
+		if (!conversation.isTransient()) {
+			conversation.end();
 		}
 	}
 

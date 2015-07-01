@@ -35,38 +35,61 @@
 
 					</p:commandLink>
 					<br />
-					<br />
+
 					<p:commandLink value="Cadastre-se"
 						action="cadastroCliente?faces-redirect=true">
 
 					</p:commandLink>
 
 					<br />
-					<p:commandLink value="Entrar">
 
-					</p:commandLink>
+
+
+					<h:outputLink onclick="PF('modalLoginPrincipal').show();" title="login">
+						<p:commandButton value="Entrar" />
+					</h:outputLink>
+					<p:growl id="growlPrincipal" sticky="true" showDetail="true"
+						life="3000" />
+					<p:dialog header="Login" widgetVar="modalLoginPrincipal" resizable="false">
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputLabel for="username" value="Email: " />
+							<p:inputText id="username" value="#{validarLogin.c.email}"
+								required="true" label="username" />
+							<h:outputLabel for="password" value="Senha: " />
+							<p:password id="password" value="#{validarLogin.c.senha}"
+								required="true" label="password" />
+							<f:facet name="footer">
+								<p:commandButton value="Login" update="growlPrincipal"
+									action="#{validarLogin.validar()}"
+									oncomplete="handleLoginRequest(xhr, status, args)" />
+							</f:facet>
+						</h:panelGrid>
+					</p:dialog>
+
+
 
 					<br />
 					<br />
 					<br />
 
 
-					<p:commandButton value="2" icon="ui-icon-cart" type="button" />
-					<h:outputText value="Meu Carrinho" />
+					<p:commandButton value="Meu Carrinho" icon="ui-icon-cart" type="button" />
+					
 
 
 				</h:panelGrid>
 
 			</h:panelGrid>
+
 			<h:form>
 				<h:panelGrid columns="1" styleClass="menu">
 
 					<p:menubar styleClass="centeredMenuBar">
-						<p:menuitem value="|   Todas as ofestas   |" url="#" />
+						<p:menuitem value="|   Todas as ofertas   |" url="#" />
 						<p:menuitem value="|   Restaurantes e Bares   |" url="#" />
 						<p:menuitem value="|   Saúde e Beleza   |" url="#" />
 						<p:menuitem value="|   Fitness   |" url="#" />
-						<p:menuitem value="|  Curses e Aulas   |" url="#" />
+						<p:menuitem value="|  Cursos e Aulas   |" url="#" />
 						<p:menuitem value="|   Quem somos   |" url="#" />
 					</p:menubar>
 				</h:panelGrid>
