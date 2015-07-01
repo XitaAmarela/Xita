@@ -41,18 +41,18 @@
 
 			</h:panelGrid>
 
-	<h:form>
+			<h:form>
 
-			<h:panelGrid columns="" style="width:100%;"
-				columnClasses="logo,detail">
+				<h:panelGrid columns="" style="width:100%;"
+					columnClasses="logo,detail">
 
-				<p:outputPanel>
-					<h:panelGrid columns="1" cellpadding="5"
-						style="width:50%;margin-left:25%">
+					<p:outputPanel>
+						<h:panelGrid columns="1" cellpadding="5"
+							style="width:50%;margin-left:25%">
 
 
-						<p:tabView>
-						
+							<p:tabView>
+
 								<p:tab title="Cadastro Produto">
 									<p:button value="Visualizar" icon="ui-icon-search"
 										style="float:right">
@@ -61,7 +61,8 @@
 									<h:panelGrid id="gridTitulo" columns="1">
 										<h:outputLabel for="titulo" value="Titulo:"
 											style="font-weight:bold" />
-										<p:inputText id="titulo" label="titulo" value="#{cadastroProdutoMB.produto.nomeProduto}" />
+										<p:inputText id="titulo" label="titulo"
+											value="#{cadastroProdutoMB.produto.nomeProduto}" />
 
 										<h:form>
 											<p:panel header="Imagem" footer="Eng Web II"
@@ -87,11 +88,27 @@
 											<h:outputLabel for="valor" value="Valor"
 												style="font-weight:bold" />
 											<p:inputText id="valor" label="Valor"
-												style="width:50px!important" value="#{cadastroProdutoMB.produto.preco}" />
+												style="width:50px!important"
+												value="#{cadastroProdutoMB.produto.preco}" />
 											<h:outputLabel for="desconto" value="Desconto"
 												style="font-weight:bold" />
 											<p:inputText id="desconto" label="Desconto"
-												style="width:50px!important" value="#{cadastroProdutoMB.produto.porcentagemDesconto}"  />
+												style="width:50px!important"
+												value="#{cadastroProdutoMB.produto.porcentagemDesconto}" />
+											<p:outputLabel for="console" value="Tipo" style="font-weight:bold"/>
+											<p:selectOneMenu id="console"
+												value="#{cadastroProdutoMB.produto.tipoProduto}" style="width:150px">
+												<f:selectItem itemLabel="Restaurantes e Bares" itemValue="2" />
+												<f:selectItem itemLabel="Saúde e Beleza" itemValue="3" />
+												<f:selectItem itemLabel="Fitness" itemValue="4" />
+												<f:selectItem itemLabel="Cursos e Aulas" itemValue="5" />
+											</p:selectOneMenu>
+											<h:outputLabel for="quantidade" value="Quantidade"
+												style="font-weight:bold" />
+											<p:inputText id="quantidade" label="Quantidade"
+												style="width:50px!important"
+												value="#{cadastroProdutoMB.produto.quantidadeEmEstoque}" />
+
 										</h:panelGrid>
 
 										<h:outputLabel for="tempoPromoção" value="Tempo da Promoção"
@@ -103,21 +120,23 @@
 												<h:outputLabel for="horas" value="Data:"
 													style="font-weight:bold" />
 												<p:calendar id="horas" label="Horas"
-													 value="#{cadastroProdutoMB.produto.tempoPropaganda}" pattern="dd-MM-yyyy" mask="true" />
+													value="#{cadastroProdutoMB.produto.tempoPropaganda}"
+													pattern="dd-MM-yyyy" mask="true" />
 											</h:panelGrid>
 
-										
+
 										</h:panelGrid>
 										<h:outputLabel for="detalhes" value="Detalhes:"
 											style="font-weight:bold" />
-										<p:inputTextarea rows="6" cols="33"  value="#{cadastroProdutoMB.produto.descricao}"/>
-										
+										<p:inputTextarea rows="6" cols="33"
+											value="#{cadastroProdutoMB.produto.descricao}" />
+
 										<p:commandButton value="Cancelar"
 											action="#{cadastroProdutoMB.cancelar()}" immediate="true"
 											icon="ui-icon-cancel"></p:commandButton>
 										<p:commandButton value="Salvar"
 											action="#{cadastroProdutoMB.salvar(uploadMB.arquivo)}"
-											 icon="ui-icon-check"></p:commandButton>
+											icon="ui-icon-check"></p:commandButton>
 									</h:panelGrid>
 								</p:tab>
 
@@ -125,14 +144,14 @@
 
 
 
-						</p:tabView>
-					</h:panelGrid>
-				</p:outputPanel>
+							</p:tabView>
+						</h:panelGrid>
+					</p:outputPanel>
 
-							
 
-			</h:panelGrid>
-</h:form>
+
+				</h:panelGrid>
+			</h:form>
 
 
 
