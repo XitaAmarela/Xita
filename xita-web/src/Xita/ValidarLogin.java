@@ -28,7 +28,6 @@ public class ValidarLogin implements Serializable {
 	private ClienteDAO validarCliente;
 	@Inject
 	private Conversation conversation;
-	private String usuario, senha;
 	public FacesContext getContext() {
 		return context;
 	}
@@ -54,15 +53,13 @@ public class ValidarLogin implements Serializable {
 	  }
 	
 	public String validar() {
-		c.setEmail(getUsuario());
-		c.setSenha(getSenha());
 		idClienteSessao = validarCliente.validarCliente(c);
 
 		if (idClienteSessao != -1) {
 			session.setAttribute("idClienteSessao", idClienteSessao);
-			return "principal";
+			return "principal?faces-redirect=true";
 		} else {
-			return "destalhesProduto";
+			return "destalhesProduto?faces-redirect=true";
 		}
 	}
 
@@ -123,21 +120,6 @@ public class ValidarLogin implements Serializable {
 		this.session = session;
 	}
 
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 
 
 }

@@ -24,16 +24,14 @@ public class ImagemMB {
 	public StreamedContent getImage() throws IOException {
 		FacesContext context = FacesContext.getCurrentInstance();
 
-		if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
-			return new DefaultStreamedContent();
-		} else {
+		
 			String fotoId = context.getExternalContext().getRequestParameterMap().get("fotoId");
 			if (fotoId.equals("")) {
 				return null;
 			}
 			ImagemProduto f = cadastroFoto.buscarPorId(new Long(fotoId));
 			return new DefaultStreamedContent(new ByteArrayInputStream(f.getContent()), f.getTipo());
-		}
+		
 	}
 
 

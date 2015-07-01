@@ -32,6 +32,8 @@ public class Principal {
 	@EJB
 	private ProdutoOfertaDAO produtoOfertaDAO;
 
+	
+	
 	@PostConstruct
 	public void init() {
 		produtoOferta = produtoOfertaDAO.listAll();
@@ -124,5 +126,5 @@ public class Principal {
 	public void setSession(HttpSession session) {
 		this.session = session;
 	}
-
+    
 }
