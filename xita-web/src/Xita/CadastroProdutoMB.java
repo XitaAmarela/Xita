@@ -1,6 +1,7 @@
 package Xita;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.annotation.PostConstruct;
@@ -12,11 +13,11 @@ import javax.inject.Named;
 
 import org.primefaces.model.UploadedFile;
 
-import DaoCadastro.CadastroImagemProduto;
-import DaoCadastro.CadastroProdutoOferta;
-import DaoCadastroImpl.CadastroImagemProdutoImpl;
-import DaoCadastroImpl.CadastroProdutoOfertaImpl;
+import Dao.ImagemProdutoDAO;
+import Dao.ProdutoOfertaDAO;
+import Enums.enumTipoProduto;
 import Model.ImagemProduto;
+import Model.Ofertante;
 import Model.ProdutoOferta;
 
 @Named("cadastroProdutoMB")
@@ -34,10 +35,10 @@ public class CadastroProdutoMB implements Serializable{
 	
 	
 	@EJB
-	private CadastroProdutoOfertaImpl cadastroProduto;
+	private ProdutoOfertaDAO cadastroProduto;
 	
 	@EJB
-	private CadastroImagemProdutoImpl cadastroImagem;
+	private ImagemProdutoDAO cadastroImagem;
 	
 	@Inject
 	private Conversation conversation;
@@ -49,20 +50,33 @@ public class CadastroProdutoMB implements Serializable{
 		imagem = new ImagemProduto();
 	}
 	
-	private String salvar(UploadedFile arquivo){
+	public String salvar(UploadedFile arquivo){
+		Ofertante ofert = new Ofertante();
+		ofert.setId(new Long(2));
+		produto.setOfertante(ofert);
+		produto.setTipoProduto(enumTipoProduto.ALIMENTACAO);
+		produto.setPrecoComDesconto(produto.getPreco().multiply(produto.getPorcentagemDesconto().divide(new BigDecimal(100))));
+		produto =cadastroProduto.cadastrarProdutoOferta(produto);
 		if(arquivo!=null){
 			
 			imagem.setContent(arquivo.getContents());
 			imagem.setNome(arquivo.getFileName());
 			imagem.setTipo(arquivo.getContentType());
+			imagem.setProduto(getProduto());
 			imagem = cadastroImagem.cadastrarImagemProduto(imagem);
-			imagem.setProduto(getProduto());					
+								
 		}
-		cadastroProduto.cadastrarProdutoOferta(produto);
-		if(conversation.isTransient()){
+		
+		if(!conversation.isTransient()){
 			conversation.end();
 		}
-		return "listagemProduto?faces-redirect=true";
+		return "listaProdutosAdmin?faces-redirect=true";
+	}
+	public String cancelar() {
+		if (!conversation.isTransient()) {
+			conversation.end();
+		}
+		return "listaProdutosAdmin?faces-redirect=true";
 	}
 
 	public ProdutoOferta getProduto() {
@@ -85,27 +99,44 @@ public class CadastroProdutoMB implements Serializable{
 		this.date = date;
 	}
 
-	public CadastroProdutoOfertaImpl getCadastroProduto() {
-		return cadastroProduto;
-	}
-
-	public void setCadastroProduto(CadastroProdutoOfertaImpl cadastroProduto) {
-		this.cadastroProduto = cadastroProduto;
-	}
-
-	public CadastroImagemProdutoImpl getCadastroImagem() {
-		return cadastroImagem;
-	}
-
-	public void setCadastroImagem(CadastroImagemProdutoImpl cadastroImagem) {
-		this.cadastroImagem = cadastroImagem;
-	}
-
+	
 	public Conversation getConversation() {
 		return conversation;
 	}
 
 	public void setConversation(Conversation conversation) {
 		this.conversation = conversation;
+	}
+
+	public ImagemProduto getImagem() {
+		return imagem;
+	}
+
+	public void setImagem(ImagemProduto imagem) {
+		this.imagem = imagem;
+	}
+
+	public Long getIdProduto() {
+		return idProduto;
+	}
+
+	public void setIdProduto(Long idProduto) {
+		this.idProduto = idProduto;
+	}
+
+	public ProdutoOfertaDAO getCadastroProduto() {
+		return cadastroProduto;
+	}
+
+	public ImagemProdutoDAO getCadastroImagem() {
+		return cadastroImagem;
+	}
+
+	public void setCadastroProduto(ProdutoOfertaDAO cadastroProduto) {
+		this.cadastroProduto = cadastroProduto;
+	}
+
+	public void setCadastroImagem(ImagemProdutoDAO cadastroImagem) {
+		this.cadastroImagem = cadastroImagem;
 	}
 }

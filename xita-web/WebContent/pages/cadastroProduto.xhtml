@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template-principal.xhtml">
+
+	<ui:define name="conteudo">
+		<p:panel>
+			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
+				styleClass="gridcabecalho">
+
+				<h:panelGrid columns="1" style="text-align:justific">
+					<p:graphicImage value="../imagens/xitaAmarela.png"></p:graphicImage>
+
+					<h3 style="background: yellow;">Xita Amarela</h3>
+				</h:panelGrid>
+
+
+
+				<h:panelGrid columns="2" sclass="ui-grid-responsive"
+					style="float:right">
+					<p:button value="Configuração" icon="ui-icon-arrow-4-diag">
+
+					</p:button>
+
+					<p:commandButton value="Sair" />
+					<br> </br>
+					<br> </br>
+					<p:button value="Voltar" icon="ui-icon-arrowreturnthick-1-w">
+
+					</p:button>
+					<div>
+						<h:outputLabel for="name" value="Fulano" />
+						<h:outputLabel for="name" value="Bem Vindo!" />
+					</div>
+				</h:panelGrid>
+
+
+
+			</h:panelGrid>
+
+	<h:form>
+
+			<h:panelGrid columns="" style="width:100%;"
+				columnClasses="logo,detail">
+
+				<p:outputPanel>
+					<h:panelGrid columns="1" cellpadding="5"
+						style="width:50%;margin-left:25%">
+
+
+						<p:tabView>
+						
+								<p:tab title="Cadastro Produto">
+									<p:button value="Visualizar" icon="ui-icon-search"
+										style="float:right">
+
+									</p:button>
+									<h:panelGrid id="gridTitulo" columns="1">
+										<h:outputLabel for="titulo" value="Titulo:"
+											style="font-weight:bold" />
+										<p:inputText id="titulo" label="titulo" value="#{cadastroProdutoMB.produto.nomeProduto}" />
+
+										<h:form>
+											<p:panel header="Imagem" footer="Eng Web II"
+												toggleable="true">
+												<h:panelGrid columns="1" cellpadding="5">
+													<p:fileUpload
+														fileUploadListener="#{uploadMB.handleFileUpload}"
+														mode="advanced" dragDropSupport="true" sizeLimit="100000"
+														fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/">
+													</p:fileUpload>
+
+													<p:graphicImage value="#{imagemMB.image}" id="foto"
+														cache="false">
+														<f:param name="fotoId"
+															value="#{(cadastroProdutoMB.imagem!=null?cadastroProdutoMB.imagem.id:null)}" />
+													</p:graphicImage>
+
+												</h:panelGrid>
+
+											</p:panel>
+										</h:form>
+										<h:panelGrid columns="4">
+											<h:outputLabel for="valor" value="Valor"
+												style="font-weight:bold" />
+											<p:inputText id="valor" label="Valor"
+												style="width:50px!important" value="#{cadastroProdutoMB.produto.preco}" />
+											<h:outputLabel for="desconto" value="Desconto"
+												style="font-weight:bold" />
+											<p:inputText id="desconto" label="Desconto"
+												style="width:50px!important" value="#{cadastroProdutoMB.produto.porcentagemDesconto}"  />
+										</h:panelGrid>
+
+										<h:outputLabel for="tempoPromoção" value="Tempo da Promoção"
+											style="font-weight:bold" />
+
+										<h:panelGrid columns="1">
+
+											<h:panelGrid columns="1">
+												<h:outputLabel for="horas" value="Data:"
+													style="font-weight:bold" />
+												<p:calendar id="horas" label="Horas"
+													 value="#{cadastroProdutoMB.produto.tempoPropaganda}" pattern="dd-MM-yyyy" mask="true" />
+											</h:panelGrid>
+
+										
+										</h:panelGrid>
+										<h:outputLabel for="detalhes" value="Detalhes:"
+											style="font-weight:bold" />
+										<p:inputTextarea rows="6" cols="33"  value="#{cadastroProdutoMB.produto.descricao}"/>
+										
+										<p:commandButton value="Cancelar"
+											action="#{cadastroProdutoMB.cancelar()}" immediate="true"
+											icon="ui-icon-cancel"></p:commandButton>
+										<p:commandButton value="Salvar"
+											action="#{cadastroProdutoMB.salvar(uploadMB.arquivo)}"
+											 icon="ui-icon-check"></p:commandButton>
+									</h:panelGrid>
+								</p:tab>
+
+
+
+
+
+						</p:tabView>
+					</h:panelGrid>
+				</p:outputPanel>
+
+							
+
+			</h:panelGrid>
+</h:form>
+
+
+
+
+		</p:panel>
+	</ui:define>
+
+</ui:composition>

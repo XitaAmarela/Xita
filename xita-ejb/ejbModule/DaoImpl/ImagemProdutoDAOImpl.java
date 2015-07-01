@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import Dao.ImagemProdutoDAO;
+import Model.Cliente;
 import Model.ImagemProduto;
 
 @Stateless
@@ -50,5 +51,13 @@ public class ImagemProdutoDAOImpl implements ImagemProdutoDAO{
 		Query query = em.createQuery("SELECT i FROM ImagemProduto i WHERE produto_id = "+id);
 		return (ImagemProduto) query.getSingleResult();
 	}
-
+    
+	@Override
+	public ImagemProduto cadastrarImagemProduto(ImagemProduto imagemProduto) {
+		if (imagemProduto.getNome() == null || imagemProduto.getProduto() == null ) {
+			return null;
+		}
+		
+		return this.persist(imagemProduto);
+	}
 }

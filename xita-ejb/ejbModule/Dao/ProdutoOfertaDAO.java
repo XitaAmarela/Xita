@@ -13,4 +13,5 @@ public interface ProdutoOfertaDAO extends GenericaDAO<ProdutoOferta>{
 	public List<ProdutoOferta> listarProdutosPorCompraDeCliente(Cliente cliente);
 	public List<ProdutoOferta> listAll();
 	public ProdutoOferta buscarPorId(Long id);
+	public ProdutoOferta cadastrarProdutoOferta(ProdutoOferta produtoOferta);
 }
