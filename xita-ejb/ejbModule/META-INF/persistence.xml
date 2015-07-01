@@ -7,7 +7,6 @@
 	<persistence-unit name="XitaAmarelaPU" transaction-type="JTA">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>java:/XitaAmarelaDS</jta-data-source>
-
 		<properties>
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />

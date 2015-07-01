@@ -4,28 +4,49 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.enterprise.context.Conversation;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
-import javax.faces.event.ActionEvent;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import Dao.ProdutoOfertaDAO;
 import Model.ProdutoOferta;
 
 @ManagedBean
-@ViewScoped
 public class Principal {
 
+	@ManagedProperty(value="#{param.id}")
+    private int id;
 	private String option;
 	private ProdutoOferta produto;
 	private List<ProdutoOferta> produtoOferta;
-
+	@Inject
+	private Conversation conversation;
+	
+	
+	  FacesContext context = FacesContext.getCurrentInstance();     
+	    HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+	
 	@EJB
 	private ProdutoOfertaDAO produtoOfertaDAO;
 
 	@PostConstruct
 	public void init() {
 		produtoOferta = produtoOfertaDAO.listAll();
+	}
+	public void initConversation(){
+	    if (!FacesContext.getCurrentInstance().isPostback() 
+	      && conversation.isTransient()) {
+	      conversation.begin();
+	    }
+	  }
+	
+	public String detalhes(){
+		session.setAttribute("idPropaganda", id);
+		return "detalhesProduto?faces-redirect=true";
+		
 	}
 
 	public void todasOfertas() {
@@ -78,6 +99,30 @@ public class Principal {
 
 	public void setProdutoOferta(List<ProdutoOferta> produtoOferta) {
 		this.produtoOferta = produtoOferta;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public FacesContext getContext() {
+		return context;
+	}
+
+	public void setContext(FacesContext context) {
+		this.context = context;
+	}
+
+	public HttpSession getSession() {
+		return session;
+	}
+
+	public void setSession(HttpSession session) {
+		this.session = session;
 	}
 
 }

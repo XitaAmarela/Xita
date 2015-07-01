@@ -73,10 +73,10 @@
 														fileLimit="1" allowTypes="/(\.|\/)(gif|jpe?g|png)$/">
 													</p:fileUpload>
 
-													<p:graphicImage value="#{imagemMB.image}" id="foto"
+													<p:graphicImage value="#{uploadMB.image}" id="foto"
 														cache="false">
 														<f:param name="fotoId"
-															value="#{(cadastroProdutoMB.imagem!=null?cadastroProdutoMB.imagem.id:null)}" />
+															value="#{(cadastroProdutoMB.imagem!=null?cadastroProdutoMB.imagem.id:1)}" />
 													</p:graphicImage>
 
 												</h:panelGrid>

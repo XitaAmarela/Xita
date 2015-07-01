@@ -6,9 +6,9 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template-principal.xhtml">
 
-	<ui:define name="conteudo">
-		<p:panel>
-			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
+	<ui:define name="conteudo" >
+		<p:panel  >
+			<h:panelGrid columns="3" border="1" class="ui-grid-responsive" 
 				styleClass="gridcabecalho">
 
 				<h:panelGrid columns="1" style="text-align:justific">
@@ -30,35 +30,34 @@
 				</h:panelGrid>
 
 				<h:panelGrid columns="1" style="text-align:right; width:100%">
-					<p:commandLink value="Divulgue"
-						action="cadastroOfertante?faces-redirect=true">
+					<p:panel visible="#{validarLogin.deslogado()}" >
+						<p:commandLink value="Divulgue"
+							action="cadastroOfertante?faces-redirect=true">
 
-					</p:commandLink>
-					<br />
-					<br />
-					<p:commandLink value="Cadastre-se"
-						action="cadastroCliente?faces-redirect=true">
+						</p:commandLink>
+						<br />
+						<br />
+						<p:commandLink value="Cadastre-se"
+							action="cadastroCliente?faces-redirect=true">
 
-					</p:commandLink>
+						</p:commandLink>
 
-					<br />
-					<p:commandLink value="Entrar">
+						<br />
+						<p:commandLink value="Entrar">
 
-					</p:commandLink>
+						</p:commandLink>
 
-					<br />
-					<br />
-					<br />
+						<br />
+						<br />
+						<br />
 
-
+					</p:panel>
 					<p:commandButton value="2" icon="ui-icon-cart" type="button" />
 					<h:outputText value="Meu Carrinho" />
-
-
 				</h:panelGrid>
 
 			</h:panelGrid>
-			<h:form>
+			<h:form onsubmit="#{validarLogin.initConversation()}">
 				<h:panelGrid columns="1" styleClass="menu">
 
 					<p:menubar styleClass="centeredMenuBar">
@@ -150,7 +149,7 @@
 												<br />
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
-														<p:commandButton action="detalhesProduto"
+														<p:commandButton action="#{principal.detalhes()}"
 															value="Ver Detalhes">
 															<f:param name="id" value="#{p.id}" />
 														</p:commandButton>
