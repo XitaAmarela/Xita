@@ -33,8 +33,9 @@ public class Compra implements Serializable {
 	//@NotNull
 	//private List<ProdutoOferta> produto;
 	
+	
 	@ManyToMany
-	@JoinTable(name="compra", joinColumns={@JoinColumn(name="compra_id")}, inverseJoinColumns={@JoinColumn(name="produto_id")})
+	@JoinTable(name="compra", joinColumns={@JoinColumn(name="id")}, inverseJoinColumns={@JoinColumn(name="produto_id")})
 	private List<ProdutoOferta> produto;
 
 	public Long getId() {
