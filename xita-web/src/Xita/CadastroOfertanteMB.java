@@ -1,5 +1,7 @@
 package Xita;
 
+import java.io.Serializable;
+
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.Conversation;
@@ -7,14 +9,8 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import Dao.ClienteDAO;
 import Dao.OfertanteDAO;
-import DaoCadastro.CadastroCliente;
-import DaoCadastroImpl.CadastroClienteImpl;
-import Model.Cliente;
 import Model.Ofertante;
-
-import java.io.Serializable;
 
 @Named("cadastroOfertanteMB")
 @ConversationScoped

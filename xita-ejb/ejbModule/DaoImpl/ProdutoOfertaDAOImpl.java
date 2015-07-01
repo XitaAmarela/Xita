@@ -92,4 +92,16 @@ public class ProdutoOfertaDAOImpl implements ProdutoOfertaDAO {
 
 	}
 
+	@Override
+	public ProdutoOferta cadastrarProdutoOferta(ProdutoOferta produtoOferta) {
+		if (produtoOferta.getNomeProduto() == null
+				|| produtoOferta.getOfertante() == null
+				|| produtoOferta.getPreco() == null || produtoOferta.getTempoPropaganda() == null){
+			return null;
+			
+		}
+		
+		return this.persist(produtoOferta);
+	}
+
 }

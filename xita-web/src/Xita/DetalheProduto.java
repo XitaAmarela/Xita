@@ -1,11 +1,8 @@
 package Xita;
 
-import java.io.Serializable;
-
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.SessionScoped;
 
 import Dao.ProdutoOfertaDAO;
 import Model.ProdutoOferta;
@@ -26,8 +23,8 @@ public class DetalheProduto  {
     
     
     public ProdutoOferta getProduto() {
-    	
-		return produtoOfertaDAO.buscarPorId(new Long(id));
+    	this.produto =  produtoOfertaDAO.buscarPorId(new Long(id));
+		return produto;
 	}
 
 
