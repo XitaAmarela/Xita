@@ -34,7 +34,7 @@ public class ProdutoOferta implements Serializable {
 	private String nomeProduto;
 	@NotNull
 	private String descricao;
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.ORDINAL)
 	@NotNull
 	private enumTipoProduto tipoProduto;
 	@NotNull

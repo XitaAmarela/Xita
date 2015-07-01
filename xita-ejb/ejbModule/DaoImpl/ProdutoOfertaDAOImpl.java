@@ -8,14 +8,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import Dao.ProdutoOfertaDAO;
+import Model.Cliente;
+import Model.Compra;
 import Model.Ofertante;
 import Model.ProdutoOferta;
 
 @Stateless
-public class ProdutoOfertaDAOImpl implements ProdutoOfertaDAO{
+public class ProdutoOfertaDAOImpl implements ProdutoOfertaDAO {
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Override
 	public ProdutoOferta persist(ProdutoOferta t) {
 		if (t.getId() != null) {
@@ -27,15 +29,16 @@ public class ProdutoOfertaDAOImpl implements ProdutoOfertaDAO{
 
 	@Override
 	public void delete(Long id) {
-		Query query = em.createQuery("DELETE FROM ProdutoOferta p WHERE p.id = "+id);
+		Query query = em
+				.createQuery("DELETE FROM ProdutoOferta p WHERE p.id = " + id);
 		query.executeUpdate();
 	}
 
 	@Override
 	public void delete(ProdutoOferta t) {
-		if(t!=null){
+		if (t != null) {
 			em.remove(t);
-		}		
+		}
 	}
 
 	@SuppressWarnings("unchecked")
@@ -53,14 +56,40 @@ public class ProdutoOfertaDAOImpl implements ProdutoOfertaDAO{
 	@Override
 	public void removerProdutoOferta(ProdutoOferta produto) {
 		em.remove(produto);
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<ProdutoOferta> listarProdutoPorOfertante(Long id) {
-		Query query = em.createQuery("SELECT p FROM ProdutoOferta p WHERE ofertante_id = "+ id);
+		Query query = em
+				.createQuery("SELECT p FROM ProdutoOferta p WHERE ofertante_id = "
+						+ id);
 		return (List<ProdutoOferta>) query.getResultList();
+	}
+
+	@Override
+	public List<ProdutoOferta> listarProdutoPorTipo(int opc) {
+		Query query = em
+				.createQuery("SELECT p FROM ProdutoOferta p WHERE tipoProduto = "
+						+ opc);
+		return (List<ProdutoOferta>) query.getResultList();
+	}
+
+	@Override
+	public List<ProdutoOferta> listarProdutosPorCompraDeCliente(Cliente cliente) {
+		Query query1 = em
+				.createQuery("SELECT p FROM ProdutoOferta p WHERE p.produto_id IN(SELECT c.produto_id FROM Compra c WHERE c.cliente_id"
+						+ cliente.getId() + ")");
+		/*
+		 * Query query = em
+		 * .createQuery("SELECT c.produto_id FROM Compra c WHERE c.cliente_id = "
+		 * + cliente.getId()); Query query1 = em
+		 * .createQuery("SELECT p FROM ProdutoOferta p WHERE p.produto_id = " +
+		 * query);
+		 */
+		return (List<ProdutoOferta>) query1.getResultList();
+
 	}
 
 }

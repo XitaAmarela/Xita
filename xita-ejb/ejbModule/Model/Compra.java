@@ -20,7 +20,6 @@ public class Compra implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -2981746285322222618L;
-
 	@Id
 	@SequenceGenerator(name = "compra_seq_gen", sequenceName = "compra_seq", allocationSize = 1, initialValue = 1)
 	@GeneratedValue(generator = "compra_seq_gen", strategy = GenerationType.SEQUENCE)

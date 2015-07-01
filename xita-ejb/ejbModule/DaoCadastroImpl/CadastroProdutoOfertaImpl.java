@@ -7,6 +7,7 @@ import javax.ejb.EJB;
 
 import Dao.ProdutoOfertaDAO;
 import DaoCadastro.CadastroProdutoOferta;
+import Enums.enumTipoProduto;
 import Model.Ofertante;
 import Model.ProdutoOferta;
 
@@ -52,6 +53,15 @@ public class CadastroProdutoOfertaImpl implements CadastroProdutoOferta {
 	public void removerProdutoOferta(Long id) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public List<ProdutoOferta> listarProdutosOfertasPorTipo(
+			int opc) {
+		if (opc < 1 || opc > 6) {
+			return null;
+		}
+		return produtoDAO.listarProdutoPorTipo(opc);
 	}
 
 }
