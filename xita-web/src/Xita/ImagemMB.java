@@ -17,11 +17,10 @@ import Model.ImagemProduto;
 
 
 @ManagedBean
-@SessionScoped
 public class ImagemMB {
 	@EJB
 	private ImagemProdutoDAO cadastroFoto;
-
+	
 	public StreamedContent getImage() throws IOException {
 		FacesContext context = FacesContext.getCurrentInstance();
 
@@ -36,4 +35,6 @@ public class ImagemMB {
 			return new DefaultStreamedContent(new ByteArrayInputStream(f.getContent()), f.getTipo());
 		}
 	}
+
+
 }
