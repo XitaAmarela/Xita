@@ -140,7 +140,7 @@ public class ProdutoOferta implements Serializable {
 
 	public void setPrecoComDesconto(BigDecimal precoComDesconto) {
 		// TODO verificar se o calculo esta correto
-		// precoComDesconto.add(getPreco().multiply((getPorcentagemDesconto().divide(porc))));
+		precoComDesconto=(getPreco().subtract(getPreco().multiply(porcentagemDesconto.divide(new BigDecimal(100)))));
 		this.precoComDesconto = precoComDesconto;
 	}
 

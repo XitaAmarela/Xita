@@ -6,9 +6,9 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template-principal.xhtml">
 
-	<ui:define name="conteudo" >
-		<p:panel  >
-			<h:panelGrid columns="3" border="1" class="ui-grid-responsive" 
+	<ui:define name="conteudo">
+		<p:panel>
+			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
 				styleClass="gridcabecalho">
 
 				<h:panelGrid columns="1" style="text-align:justific">
@@ -30,26 +30,44 @@
 				</h:panelGrid>
 
 				<h:panelGrid columns="1" style="text-align:right; width:100%">
-					<p:panel visible="#{validarLogin.deslogado()}" >
+					<p:panel visible="#{validarLogin.deslogado()}">
 						<p:commandLink value="Divulgue"
 							action="cadastroOfertante?faces-redirect=true">
-
 						</p:commandLink>
 						<br />
 						<br />
 						<p:commandLink value="Cadastre-se"
 							action="cadastroCliente?faces-redirect=true">
-
 						</p:commandLink>
+						<br />
+						<br />
+						<h:outputLink onclick="PF('modalLoginPrincipal').show();"
+							title="login">
+							<p:commandButton value="Entrar" />
+						</h:outputLink>
+						<p:growl id="growlPrincipal" sticky="true" showDetail="true"
+							life="3000" />
+						<p:dialog header="Login" widgetVar="modalLoginPrincipal"
+							resizable="false">
+							<h:panelGrid columns="2" cellpadding="5">
+								<h:outputLabel for="username" value="Email: " />
+								<p:inputText id="username" value="#{validarLogin.usuario								}"
+									required="true" label="username" />
+								<h:outputLabel for="password" value="Senha: " />
+								<p:password id="password" value="#{validarLogin.senha}"
+									required="true" label="password" />
+								<f:facet name="footer">
+									<p:commandButton value="Login" update="growlPrincipal"
+										action="#{validarLogin.validar()}"
+										oncomplete="handleLoginRequest(xhr, status, args)" />
+								</f:facet>
+							</h:panelGrid>
+						</p:dialog>
 
-						<br />
-						<p:commandLink value="Entrar">
 
-						</p:commandLink>
 
-						<br />
-						<br />
-						<br />
+
+
 
 					</p:panel>
 					<p:commandButton value="2" icon="ui-icon-cart" type="button" />
@@ -58,14 +76,15 @@
 
 			</h:panelGrid>
 			<h:form onsubmit="#{validarLogin.initConversation()}">
+
 				<h:panelGrid columns="1" styleClass="menu">
 
 					<p:menubar styleClass="centeredMenuBar">
-						<p:menuitem value="|   Todas as ofestas   |" url="#" />
+						<p:menuitem value="|   Todas as ofertas   |" url="#" />
 						<p:menuitem value="|   Restaurantes e Bares   |" url="#" />
 						<p:menuitem value="|   Saúde e Beleza   |" url="#" />
 						<p:menuitem value="|   Fitness   |" url="#" />
-						<p:menuitem value="|  Curses e Aulas   |" url="#" />
+						<p:menuitem value="|  Cursos e Aulas   |" url="#" />
 						<p:menuitem value="|   Quem somos   |" url="#" />
 					</p:menubar>
 				</h:panelGrid>

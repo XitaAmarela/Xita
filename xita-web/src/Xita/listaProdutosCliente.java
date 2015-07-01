@@ -7,6 +7,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
+import Dao.ImagemProdutoDAO;
 import Dao.ProdutoOfertaDAO;
 import DaoImpl.ProdutoOfertaDAOImpl;
 import Model.ProdutoOferta;
@@ -20,10 +21,13 @@ public class listaProdutosCliente {
     
     @EJB
     private ProdutoOfertaDAO produtoOfertaDAO;
+    @EJB
+    private ImagemProdutoDAO imagemProdutoDAO;
      
     @PostConstruct
     public void init() {
        produtosOfertas = produtoOfertaDAO.listAll();
+       imagemProdutoDAO = (ImagemProdutoDAO) imagemProdutoDAO.listAll();
     }
 
 	public List<ProdutoOferta> getProdutosOfertas() {
@@ -40,6 +44,14 @@ public class listaProdutosCliente {
 
 	public void setProdutoOfertaDAO(ProdutoOfertaDAO produtoOfertaDao) {
 		this.produtoOfertaDAO = produtoOfertaDao;
+	}
+
+	public ImagemProdutoDAO getImagemProdutoDAO() {
+		return imagemProdutoDAO;
+	}
+
+	public void setImagemProdutoDAO(ImagemProdutoDAO imagemProdutoDAO) {
+		this.imagemProdutoDAO = imagemProdutoDAO;
 	}
      
 }
