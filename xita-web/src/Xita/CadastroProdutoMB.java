@@ -54,7 +54,7 @@ public class CadastroProdutoMB implements Serializable{
 		Ofertante ofert = new Ofertante();
 		ofert.setId(new Long(1));
 		produto.setOfertante(ofert);
-		produto.setTipoProduto(enumTipoProduto.ALIMENTACAO);
+		produto.setTipoProduto(enumTipoProduto.FITNESS);
 		produto.setPrecoComDesconto(produto.getPrecoComDesconto());
 		produto =cadastroProduto.cadastrarProdutoOferta(produto);
 		if(arquivo!=null){

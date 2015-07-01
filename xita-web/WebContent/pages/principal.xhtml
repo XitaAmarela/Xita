@@ -5,6 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template-principal.xhtml">
+	
 
 	<ui:define name="conteudo">
 		<p:panel>
@@ -51,7 +52,7 @@
 							resizable="false">
 							<h:panelGrid columns="2" cellpadding="5">
 								<h:outputLabel for="username" value="Email: " />
-								<p:inputText id="username" value="#{validarLogin.usuario								}"
+								<p:inputText id="username" value="#{validarLogin.usuario}"
 									required="true" label="username" />
 								<h:outputLabel for="password" value="Senha: " />
 								<p:password id="password" value="#{validarLogin.senha}"
@@ -152,12 +153,12 @@
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
 														<br />
-														<p:outputLabel value="#{p.tipoProduto.opc}" />
+														<p:outputLabel value="#{principal.tipoDeProduto()}" />
 													</div>
 												</div>
 												<br />
 												<div class="ui-grid-row">
-													<div class="ui-grid-col-7">
+													<div class="ui-grid-col-7" >
 														<p:outputLabel value="#{p.preco}" />
 													</div>
 
