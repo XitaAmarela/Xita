@@ -7,16 +7,12 @@
 	<navigation-rule>
 		<from-view-id>*</from-view-id>
 		<navigation-case>
-			<from-outcome>principal</from-outcome>
-			<to-view-id>/pages/principal.jsf</to-view-id>
-		</navigation-case>
-		<navigation-case>
 			<from-outcome>detalhesProduto</from-outcome>
-			<to-view-id>/pages/detalhesProduto.jsf</to-view-id>
+			<to-view-id>/pages/detalhesProduto.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>cadastroCliente</from-outcome>
-			<to-view-id>/pages/cadastroCliente.jsf</to-view-id>
+			<to-view-id>/pages/cadastroCliente.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
 			<from-outcome>cadastroOfertante</from-outcome>
@@ -27,5 +23,13 @@
 			<to-view-id>/pages/cadastroCliente.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
+	<navigation-rule>
+  <display-name>principal</display-name>
+  <from-view-id>/pages/principal.xhtml</from-view-id>
+  <navigation-case>
+    <from-outcome>failure</from-outcome>
+    <to-view-id>/pages/principal.xhtml</to-view-id>
+  </navigation-case>
+</navigation-rule>
 
 </faces-config>

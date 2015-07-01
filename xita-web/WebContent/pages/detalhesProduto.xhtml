@@ -29,29 +29,29 @@
 
 				</h:panelGrid>
 
-				<h:panelGrid columns="1" style="text-align:right; width:100%">
+				<h:panelGrid columns="1" style="text-align:right; width:100%" >
+					<p:panel visible="#{validarLogin.deslogado()}">
+						<p:commandLink value="Divulgue"
+							action="cadastroOfertante?faces-redirect=true">
 
-					<p:commandLink value="Divulgue"
-						action="cadastroOfertante?faces-redirect=true">
+						</p:commandLink>
+						<br />
+						<br />
+						<p:commandLink value="Cadastre-se"
+							action="cadastroCliente?faces-redirect=true">
 
-					</p:commandLink>
-					<br />
-					<br />
-					<p:commandLink value="Cadastre-se"
-						action="cadastroCliente?faces-redirect=true">
+						</p:commandLink>
 
-					</p:commandLink>
+						<br />
+						<p:commandLink value="Entrar">
 
-					<br />
-					<p:commandLink value="Entrar">
+						</p:commandLink>
 
-					</p:commandLink>
+						<br />
+						<br />
+						<br />
 
-					<br />
-					<br />
-					<br />
-
-
+					</p:panel>
 					<p:commandButton value="2" icon="ui-icon-cart" type="button" />
 					<h:outputText value="Meu Carrinho" />
 
@@ -126,11 +126,11 @@
 														life="3000" />
 													<p:dialog header="Login" widgetVar="modalLogin" resizable="false">
 														<h:panelGrid columns="2" cellpadding="5">
-															<h:outputLabel for="username" value="Username:" />
+															<h:outputLabel for="username" value="Email:" />
 															<p:inputText id="username"
 																value="#{validarLogin.c.email}" required="true"
 																label="username" />
-															<h:outputLabel for="password" value="Password:" />
+															<h:outputLabel for="password" value="Senha:" />
 															<p:password id="password"
 																value="#{validarLogin.c.senha}" required="true"
 																label="password" />

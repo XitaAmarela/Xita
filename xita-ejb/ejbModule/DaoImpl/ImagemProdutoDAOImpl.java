@@ -38,7 +38,6 @@ public class ImagemProdutoDAOImpl implements ImagemProdutoDAO{
 		
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public List<ImagemProduto> listAll() {
 		Query query = em.createQuery("SELECT i FROM ImagemProduto i");
