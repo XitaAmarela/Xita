@@ -73,4 +73,19 @@ public class ClienteDAOImpl implements ClienteDAO{
 		return this.persist(cliente);
 	}
 
+	@Override
+	public Long validarCliente(Cliente c) {
+		if(c.getEmail().equals(null) && c.getSenha().equals(null)){
+			return (long) -1;
+		}
+		
+		Query query = em.createQuery("SELECT c FROM Cliente c WHERE c.email = '" + c.getEmail()+"'");
+		List<Cliente> rSenha = (List<Cliente>)query.getResultList();
+		
+		if(rSenha.get(0).getSenha().equals(c.getSenha())){			
+			return rSenha.get(0).getId();
+		}
+		return (long)-1;
+	}
+
 }

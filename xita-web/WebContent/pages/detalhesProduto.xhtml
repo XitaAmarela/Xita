@@ -8,7 +8,7 @@
 
 	<ui:define name="conteudo">
 		<p:panel>
-		<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
+			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
 				styleClass="gridcabecalho">
 
 				<h:panelGrid columns="1" style="text-align:justific">
@@ -19,9 +19,9 @@
 
 				<h:panelGrid columns="1" class="ui-grid-responsive">
 
-					<p:galleria var="image" value="#{imagesView.images}" 
+					<p:galleria var="image" value="#{imagesView.images}"
 						panelWidth="878" panelHeight="200" pashowCaption="true"
-						showFilmstrip="false" >
+						showFilmstrip="false">
 						<p:graphicImage library="galeria" name="#{image}"
 							alt="Descrica da imagem #{imagem}" title="#{imagem}" width="100%"
 							height="100%"></p:graphicImage>
@@ -115,14 +115,34 @@
 															value="#{detalheProduto.produto.tempoPropaganda}" />
 													</div>
 												</div>
-												<div class="ui-grid-row">
-													<div class="ui-grid-col-10">
-														<p:button value="Adicionar ao Carrinho"
-															icon="ui-icon-arrow-4-diag">
-															<f:param name="productId" value="20" />
-														</p:button>
-													</div>
-												</div>
+												
+												<h:form>
+													<h:outputLink onclick="PF('modalLogin').show();"
+														title="login">
+														<p:commandButton value="Adicionar ao Carrinho"
+															icon="ui-icon-arrow-4-diag" />
+													</h:outputLink>
+													<p:growl id="growl" sticky="true" showDetail="true"
+														life="3000" />
+													<p:dialog header="Login" widgetVar="modalLogin" resizable="false">
+														<h:panelGrid columns="2" cellpadding="5">
+															<h:outputLabel for="username" value="Username:" />
+															<p:inputText id="username"
+																value="#{validarLogin.c.email}" required="true"
+																label="username" />
+															<h:outputLabel for="password" value="Password:" />
+															<p:password id="password"
+																value="#{validarLogin.c.senha}" required="true"
+																label="password" />
+															<f:facet name="footer">
+																<p:commandButton value="Login" update="growl"
+																	action="#{validarLogin.validar()}"
+																	oncomplete="handleLoginRequest(xhr, status, args)" />
+															</f:facet>
+														</h:panelGrid>
+													</p:dialog>
+												</h:form>
+												
 											</div>
 										</div>
 
@@ -130,20 +150,17 @@
 									<p:separator />
 									<div class="ui-grid-row">
 										<div class="ui-grid-col-3">
-											<p:outputLabel
-												value="#{detalheProduto.produto.descricao}" />
+											<p:outputLabel value="#{detalheProduto.produto.descricao}" />
 										</div>
 									</div>
 									<div class="ui-grid-row">
 										<div class="ui-grid-col-3">
-											<p:outputLabel
-												value="#{detalheProduto.produto.descricao}" />
+											<p:outputLabel value="#{detalheProduto.produto.descricao}" />
 										</div>
 									</div>
 									<div class="ui-grid-row">
 										<div class="ui-grid-col-3">
-											<p:outputLabel
-												value="#{detalheProduto.produto.descricao}" />
+											<p:outputLabel value="#{detalheProduto.produto.descricao}" />
 										</div>
 									</div>
 									<p:separator />

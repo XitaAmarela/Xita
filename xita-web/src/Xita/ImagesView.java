@@ -13,9 +13,8 @@ public class ImagesView {
 	
 	@PostConstruct
     public void init(){
-    	images = new ArrayList<String>();
-    	
-    	for (int i = 1; i < 7; i++) {
+    	images = new ArrayList<String>();    	
+    	for (int i = 1; i < 8; i++) {
 			images.add("galeria"+i+".jpg");
 		}
     }
