@@ -50,11 +50,11 @@ public class CadastroProdutoMB implements Serializable{
 		imagem = new ImagemProduto();
 	}
 	
-	public String salvar(UploadedFile arquivo){
+	public String salvar(UploadedFile arquivo, int opc){
 		Ofertante ofert = new Ofertante();
 		ofert.setId(new Long(1));
 		produto.setOfertante(ofert);
-		produto.setTipoProduto(enumTipoProduto.FITNESS);
+		//produto.setTipoProduto(enumTipoProduto);
 		produto.setPrecoComDesconto(produto.getPrecoComDesconto());
 		produto =cadastroProduto.cadastrarProdutoOferta(produto);
 		if(arquivo!=null){
