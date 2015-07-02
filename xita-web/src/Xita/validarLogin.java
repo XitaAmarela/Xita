@@ -18,7 +18,7 @@ import Model.Cliente;
 
 @ManagedBean(name="validarLogin")
 @ConversationScoped
-public class ValidarLogin implements Serializable {
+public class validarLogin implements Serializable {
 
 	/**
 	 * 
