@@ -15,7 +15,7 @@ import Model.ProdutoOferta;
 
  
 @ManagedBean(name="listaProdutosCliente")
-public class listaProdutosCliente {
+public class ListaProdutosCliente {
      
     private List<ProdutoOferta> produtosOfertas;
     

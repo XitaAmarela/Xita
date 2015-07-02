@@ -32,7 +32,6 @@ public class ValidarLogin implements Serializable {
 	public FacesContext getContext() {
 		return context;
 	}
-
 	
 	Cliente c;
 	private Long idClienteSessao;

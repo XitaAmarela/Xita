@@ -1,5 +1,7 @@
 package Xita;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -24,7 +26,9 @@ public class Principal {
 	private List<ProdutoOferta> produtoOferta;
 	@Inject
 	private Conversation conversation;
-	
+	private Date  d = new Date();
+	private int i = 0;
+
 	
 	  FacesContext context = FacesContext.getCurrentInstance();     
 	    HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
@@ -34,6 +38,7 @@ public class Principal {
 
 	@PostConstruct
 	public void init() {
+		
 		produtoOferta = produtoOfertaDAO.listAll();
 	}
 	public void initConversation(){
@@ -48,6 +53,16 @@ public class Principal {
 		return "detalhesProduto?faces-redirect=true";
 		
 	}
+	public Date tempoRestante(){
+		
+		Long mm = new Long(produtoOferta.get(1).getTempoPropaganda().getTime() - new Date().getTime());	
+		Date a = new Date(mm);
+		i++;
+		if(i==produtoOferta.size())
+		i=0;
+		setD(a);
+		return getD();
+	}	
 
 	public void todasOfertas() {
 
@@ -123,6 +138,13 @@ public class Principal {
 
 	public void setSession(HttpSession session) {
 		this.session = session;
+	}
+	
+	public Date getD() {	
+		return d;
+	}
+	public void setD(Date d) {
+		this.d = d;
 	}
 
 }

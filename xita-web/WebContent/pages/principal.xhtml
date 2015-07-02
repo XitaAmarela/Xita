@@ -51,8 +51,9 @@
 							resizable="false">
 							<h:panelGrid columns="2" cellpadding="5">
 								<h:outputLabel for="username" value="Email: " />
-								<p:inputText id="username" value="#{validarLogin.usuario								}"
-									required="true" label="username" />
+								<p:inputText id="username"
+									value="#{validarLogin.usuario								}" required="true"
+									label="username" />
 								<h:outputLabel for="password" value="Senha: " />
 								<p:password id="password" value="#{validarLogin.senha}"
 									required="true" label="password" />
@@ -186,7 +187,11 @@
 														<span class="ui-icon ui-icon-clock"> </span>
 													</div>
 													<div class="ui-grid-col-3">
-														<p:outputLabel value="#{p.tempoPropaganda}" />
+														<p:outputLabel id="relogio" value="#{principal.d}">
+															<f:convertDateTime pattern="HH:mm:ss" />
+														</p:outputLabel>
+														<p:poll interval="1"
+															listener="#{principal.tempoRestante()}" update="relogio"></p:poll>
 													</div>
 												</div>
 											</div>
