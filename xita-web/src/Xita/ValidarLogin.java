@@ -71,9 +71,15 @@ public class ValidarLogin implements Serializable {
 
 		if (sessao.getId() != -1) {
 			session.setAttribute("sessao", sessao);
-			return "listaProdutosAdmin?faces-redirect=true";
+			if(sessao.getTipoUsuario().equals("CLIENTE")){
+				return "listaProdutosCliente?faces-redirect=true";
+
+			}else{
+				
+				return "listaProdutosAdmin?faces-redirect=true";
+			}
 		} else {
-			return "destalhesProduto?faces-redirect=true";
+			return "principal?faces-redirect=true";
 		}
 	}
 

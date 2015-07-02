@@ -83,16 +83,20 @@ public class OfertanteDAOImpl implements OfertanteDAO{
 		if(email.equals(null) && senha.equals(null)){
 			return null;
 		}
-		
-		Query query = em.createQuery("SELECT f FROM Ofertante f WHERE f.email = '" + email+"'");
-		Ofertante ofertante = (Ofertante) query.getSingleResult();
-		Sessao s = new Sessao();
-		if(ofertante != null)
-		if(ofertante.getSenha().equals(senha)){		
-			s.setId(ofertante.getId());
-			s.setNome(ofertante.getNome());
-			s.setTipoUsuario("OFERTANTE");
-			return s;
+		try {
+			
+			Query query = em.createQuery("SELECT f FROM Ofertante f WHERE f.email = '" + email+"'");
+			Ofertante ofertante = (Ofertante) query.getSingleResult();
+			Sessao s = new Sessao();
+			if(ofertante != null)
+				if(ofertante.getSenha().equals(senha)){		
+					s.setId(ofertante.getId());
+					s.setNome(ofertante.getNome());
+					s.setTipoUsuario("OFERTANTE");
+					return s;
+				}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
 		return null;
 	}
