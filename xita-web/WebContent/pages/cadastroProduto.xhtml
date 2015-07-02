@@ -48,16 +48,11 @@
 					<p:outputPanel>
 						<h:panelGrid columns="1" cellpadding="5"
 							style="width:50%;margin-left:25%">
-
-
 							<p:tabView>
-
 								<p:tab title="Cadastro de Produto">
-
-									<!-- <p:button value="Visualizar" icon="ui-icon-search"
+									<p:button value="Visualizar" icon="ui-icon-search"
 										style="float:right">
-									</p:button> -->
-
+									</p:button>
 									<h:panelGrid id="gridTitulo" columns="1">
 										<h:outputLabel for="titulo" value="Título:"
 											style="font-weight:bold" />
@@ -78,9 +73,7 @@
 														<f:param name="fotoId"
 															value="#{(cadastroProdutoMB.imagem!=null?cadastroProdutoMB.imagem.id:1)}" />
 													</p:graphicImage>
-
 												</h:panelGrid>
-
 											</p:panel>
 										</h:form>
 										<br></br>
@@ -145,24 +138,11 @@
 											icon="ui-icon-check"></p:commandButton>
 									</h:panelGrid>
 								</p:tab>
-
-
-
-
-
 							</p:tabView>
 						</h:panelGrid>
 					</p:outputPanel>
-
-
-
 				</h:panelGrid>
 			</h:form>
-
-
-
-
 		</p:panel>
 	</ui:define>
-
 </ui:composition>

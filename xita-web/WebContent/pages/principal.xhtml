@@ -129,9 +129,9 @@
 											</div>
 										</div>
 										<div class="ui-grid-row">
-											<div class="ui-grid-col-12" style="text-align: center">
+											<div class="ui-grid-col-12" style="text-align: center" >
 												<p:column headerText="Foto" width="40%">
-													<p:graphicImage value="#{imagemMB.image}" cache="false">
+													<p:graphicImage value="#{imagemMB.image}" cache="false" width="300px" height="250px">
 														<f:param name="fotoId" value="#{(p!=null?p.id:null)}" />
 													</p:graphicImage>
 												</p:column>
@@ -166,16 +166,16 @@
 												<br />
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
-														<p:outputLabel style="font-size: 8px"
+														<p:outputLabel style="font-size: 12px"
 															value="tempo restante" />
 													</div>
 												</div>
 												<div class="ui-grid-row">
-													<div class="ui-grid-col-1">
+													<div class="ui-grid-col-1" >
 														<span class="ui-icon ui-icon-clock"> </span>
 													</div>
 													<div class="ui-grid-col-3">
-														<p:outputLabel id="relogio" value="#{principal.d}">
+														<p:outputLabel id="relogio" value="#{principal.d}" style="font-size: 30px">
 															<f:convertDateTime pattern="HH:mm:ss" />
 														</p:outputLabel>
 														<p:poll interval="1"
