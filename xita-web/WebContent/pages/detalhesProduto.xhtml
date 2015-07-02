@@ -72,9 +72,12 @@
 											</div>
 										</div>
 										<div class="ui-grid-row">
-											<div class="ui-grid-col-12" style="text-align: center">
-												<p:graphicImage value="../imagens/xitaAmarela.png"></p:graphicImage>
-											</div>
+											<p:column headerText="Foto" width="40%">
+							<p:graphicImage value="#{imagemMB.image}"  cache="false">
+								<f:param name="fotoId"
+									value="#{(detalheProduto.produto!=null?detalheProduto.produto.id:null)}" />
+							</p:graphicImage>
+						</p:column>
 											<div class="ui-grid-col-8">
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">

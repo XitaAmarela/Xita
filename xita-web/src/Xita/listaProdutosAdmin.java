@@ -6,15 +6,21 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import Dao.ProdutoOfertaDAO;
+import DaoImpl.ProdutoOfertaDAOImpl;
 import Model.ProdutoOferta;
  
 
  
-@ManagedBean(name="produtoService")
-public class ProdutoService {
+@ManagedBean(name="listaProdutosAdmin")
+public class listaProdutosAdmin {
      
+	FacesContext context = FacesContext.getCurrentInstance();     
+    HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
+    
     private List<ProdutoOferta> produtosOfertas;
     
     @EJB
@@ -22,7 +28,7 @@ public class ProdutoService {
      
     @PostConstruct
     public void init() {
-       produtosOfertas = produtoOfertaDAO.listAll();
+       produtosOfertas = produtoOfertaDAO.listarProdutoPorOfertante(new Long(session.getAttribute("idClienteSessao")+""));
     }
 
 	public List<ProdutoOferta> getProdutosOfertas() {
