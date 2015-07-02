@@ -6,6 +6,7 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/WEB-INF/template/template-principal.xhtml">
 
+
 	<ui:define name="conteudo">
 		<p:panel>
 			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
@@ -51,8 +52,9 @@
 							resizable="false">
 							<h:panelGrid columns="2" cellpadding="5">
 								<h:outputLabel for="username" value="Email: " />
-								<p:inputText id="username" value="#{validarLogin.c.email								}"
-									required="true" label="username" />
+								<p:inputText id="username"
+									value="#{validarLogin.c.email}" required="true"
+									label="username" />
 								<h:outputLabel for="password" value="Senha: " />
 								<p:password id="password" value="#{validarLogin.c.senha}"
 									required="true" label="password" />
@@ -146,18 +148,17 @@
 										<div class="ui-grid-row">
 											<div class="ui-grid-col-12" style="text-align: center">
 												<p:column headerText="Foto" width="40%">
-							<p:graphicImage value="#{imagemMB.image}"  cache="false">
-								<f:param name="fotoId"
-									value="#{(p!=null?p.id:null)}" />
-							</p:graphicImage>
-						</p:column>
+													<p:graphicImage value="#{imagemMB.image}" cache="false">
+														<f:param name="fotoId" value="#{(p!=null?p.id:null)}" />
+													</p:graphicImage>
+												</p:column>
 
 											</div>
 											<div class="ui-grid-col-8">
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
 														<br />
-														<p:outputLabel value="#{p.tipoProduto.opc}" />
+														<p:outputLabel value="#{principal.tipoDeProduto()}" />
 													</div>
 												</div>
 												<br />
@@ -191,7 +192,11 @@
 														<span class="ui-icon ui-icon-clock"> </span>
 													</div>
 													<div class="ui-grid-col-3">
-														<p:outputLabel value="#{p.tempoPropaganda}" />
+														<p:outputLabel id="relogio" value="#{principal.d}">
+															<f:convertDateTime pattern="HH:mm:ss" />
+														</p:outputLabel>
+														<p:poll interval="1"
+															listener="#{principal.tempoRestante()}" update="relogio"></p:poll>
 													</div>
 												</div>
 											</div>
