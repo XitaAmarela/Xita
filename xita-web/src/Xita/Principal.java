@@ -1,5 +1,6 @@
 package Xita;
 
+import java.sql.Timestamp;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -55,9 +56,12 @@ public class Principal {
 		
 	}
 
-	public Date tempoRestante(){
+	public Date tempoRestante(long id){
+		Long mm = new Date().getTime() ;
+		for (int i = 0; i < produtoOferta.size(); i++) {
+			mm = new Long(produtoOferta.get(i).getTempoPropaganda().getTime() - new Date().getTime());	
+		}
 		
-		Long mm = new Long(produtoOferta.get(1).getTempoPropaganda().getTime() - new Date().getTime());	
 		Date a = new Date(mm);
 		i++;
 		if(i==produtoOferta.size())
@@ -67,13 +71,12 @@ public class Principal {
 	}	
 
 	
-	public String tipoDeProduto(){
-		option = produtoOferta.get(1).getTipoProduto().getOpc();
-		if (option == 2) {
+	public String tipoDeProduto(int l){
+		if (l == 2) {
 			return "Restaurantes e Bares";
-		}else if (option == 3) {
+		}else if (l == 3) {
 			return "Saúde e Beleza";
-		}else if (option == 4) {
+		}else if (l == 4) {
 			return "Fitness";
 		}else{
 			return "Cursos e Aulas";
