@@ -84,9 +84,10 @@ public class OfertanteDAOImpl implements OfertanteDAO{
 			return null;
 		}
 		
-		Query query = em.createQuery("SELECT f FROM Ofertante f WHERE f.email = " + email);
+		Query query = em.createQuery("SELECT f FROM Ofertante f WHERE f.email = '" + email+"'");
 		Ofertante ofertante = (Ofertante) query.getSingleResult();
 		Sessao s = new Sessao();
+		if(ofertante != null)
 		if(ofertante.getSenha().equals(senha)){		
 			s.setId(ofertante.getId());
 			s.setNome(ofertante.getNome());
