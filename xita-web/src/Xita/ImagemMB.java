@@ -5,7 +5,6 @@ import java.io.IOException;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.faces.event.PhaseId;
 
@@ -24,6 +23,7 @@ public class ImagemMB {
 	public StreamedContent getImage() throws IOException {
 		FacesContext context = FacesContext.getCurrentInstance();
 
+		
 		if (context.getCurrentPhaseId() == PhaseId.RENDER_RESPONSE) {
 			return new DefaultStreamedContent();
 		} else {

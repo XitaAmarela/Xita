@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import Dao.ClienteDAO;
 import Model.Cliente;
 
-
 @ManagedBean(name="validarLogin")
 @ConversationScoped
 public class ValidarLogin implements Serializable {
@@ -53,15 +52,14 @@ public class ValidarLogin implements Serializable {
 	  }
 	
 	public String validar() {
-		c.setEmail(getUsuario());
-		c.setSenha(getSenha());
+
 		idClienteSessao = validarCliente.validarCliente(c);
 
 		if (idClienteSessao != -1) {
 			session.setAttribute("idClienteSessao", idClienteSessao);
-			return "principal";
+			return "principal?faces-redirect=true";
 		} else {
-			return "destalhesProduto";
+			return "destalhesProduto?faces-redirect=true";
 		}
 	}
 
@@ -137,6 +135,7 @@ public class ValidarLogin implements Serializable {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+
 
 
 }

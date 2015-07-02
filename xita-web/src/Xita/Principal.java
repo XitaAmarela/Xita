@@ -1,5 +1,7 @@
 package Xita;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -13,18 +15,19 @@ import javax.servlet.http.HttpSession;
 
 import Dao.ProdutoOfertaDAO;
 import Model.ProdutoOferta;
-
 @ManagedBean
 public class Principal {
 
 	@ManagedProperty(value="#{param.id}")
     private int id;
-	private String option;
+	private int option;
 	private ProdutoOferta produto;
 	private List<ProdutoOferta> produtoOferta;
 	@Inject
 	private Conversation conversation;
-	
+	private Date  d = new Date();
+	private int i = 0;
+
 	
 	  FacesContext context = FacesContext.getCurrentInstance();     
 	    HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
@@ -32,8 +35,11 @@ public class Principal {
 	@EJB
 	private ProdutoOfertaDAO produtoOfertaDAO;
 
+	
+	
 	@PostConstruct
 	public void init() {
+		
 		produtoOferta = produtoOfertaDAO.listAll();
 	}
 	public void initConversation(){
@@ -48,6 +54,32 @@ public class Principal {
 		return "detalhesProduto?faces-redirect=true";
 		
 	}
+
+	public Date tempoRestante(){
+		
+		Long mm = new Long(produtoOferta.get(1).getTempoPropaganda().getTime() - new Date().getTime());	
+		Date a = new Date(mm);
+		i++;
+		if(i==produtoOferta.size())
+		i=0;
+		setD(a);
+		return getD();
+	}	
+
+	
+	public String tipoDeProduto(){
+		option = produtoOferta.get(1).getTipoProduto().getOpc();
+		if (option == 2) {
+			return "Restaurantes e Bares";
+		}else if (option == 3) {
+			return "Saúde e Beleza";
+		}else if (option == 4) {
+			return "Fitness";
+		}else{
+			return "Cursos e Aulas";
+		}
+	}
+
 
 	public void todasOfertas() {
 
@@ -73,11 +105,11 @@ public class Principal {
 
 	}
 
-	public String getOption() {
+	public int getOption() {
 		return option;
 	}
 
-	public void setOption(String option) {
+	public void setOption(int option) {
 		this.option = option;
 	}
 
@@ -124,5 +156,13 @@ public class Principal {
 	public void setSession(HttpSession session) {
 		this.session = session;
 	}
+
+	public Date getD() {	
+		return d;
+	}
+	public void setD(Date d) {
+		this.d = d;
+	}
+
 
 }

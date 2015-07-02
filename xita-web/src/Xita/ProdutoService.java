@@ -8,7 +8,6 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
 import Dao.ProdutoOfertaDAO;
-import DaoImpl.ProdutoOfertaDAOImpl;
 import Model.ProdutoOferta;
  
 
