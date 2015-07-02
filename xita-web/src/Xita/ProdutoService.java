@@ -25,6 +25,11 @@ public class ProdutoService {
        produtosOfertas = produtoOfertaDAO.listAll();
     }
 
+
+
+	public void quemSomos() {
+
+	}
 	public List<ProdutoOferta> getProdutosOfertas() {
 		return produtosOfertas;
 	}

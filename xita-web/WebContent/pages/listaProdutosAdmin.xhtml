@@ -32,8 +32,8 @@
 
 					</p:button>
 					<div>
-						<h:outputLabel for="name" value="Fulano" />
-						<h:outputLabel for="name" value="Bem Vindo!" />
+						<h:outputLabel value="Fulano" />
+						<h:outputLabel value="Bem Vindo!" />
 					</div>
 				</h:panelGrid>
 
@@ -53,10 +53,15 @@
 							<p:column headerText="Produto">
 								<h:outputText value="#{prod.nomeProduto}" />
 							</p:column>
-							<p:column headerText="Imagem">
-								<p:graphicImage value="../imagens/xitaAmarela.png" height="50px"
-									width="50px"></p:graphicImage>
-							</p:column>
+							<div class="ui-grid-col-12" style="text-align: center">
+								<p:column headerText="Foto">
+									<p:graphicImage value="#{imagemMB.image}" cache="false" width="80px" height="80px">
+										<f:param name="fotoId" value="#{prod.id}" />
+									</p:graphicImage>
+								</p:column>
+
+							</div>
+
 							<p:column headerText="Tipo">
 								<h:outputText value="#{prod.tipoProduto}" />
 							</p:column>

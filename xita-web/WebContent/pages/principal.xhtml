@@ -41,25 +41,7 @@
 							title="login">
 							<p:commandButton value="Entrar" />
 						</h:outputLink>
-						<p:growl id="growlPrincipal" sticky="true" showDetail="true"
-							life="3000" />
-						<p:dialog header="Login" widgetVar="modalLoginPrincipal"
-							resizable="false">
-							<h:panelGrid columns="2" cellpadding="5">
-								<h:outputLabel for="username" value="Email: " />
-								<p:inputText id="username"
-									value="#{validarLogin.c.email}" required="true"
-									label="username" />
-								<h:outputLabel for="password" value="Senha: " />
-								<p:password id="password" value="#{validarLogin.c.senha}"
-									required="true" label="password" />
-								<f:facet name="footer">
-									<p:commandButton value="Login" update="growlPrincipal"
-										action="#{validarLogin.validar()}"
-										oncomplete="handleLoginRequest(xhr, status, args)" />
-								</f:facet>
-							</h:panelGrid>
-						</p:dialog>
+
 					</p:panel>
 					<p:commandButton value="2" icon="ui-icon-cart" type="button" />
 					<h:outputText value="Meu Carrinho" />
@@ -68,12 +50,18 @@
 			<h:form onsubmit="">
 				<h:panelGrid columns="1" styleClass="menu">
 					<p:menubar styleClass="centeredMenuBar">
-						<p:menuitem value="|   Todas as ofertas   |" url="#" />
-						<p:menuitem value="|   Restaurantes e Bares   |" url="#" />
-						<p:menuitem value="|   Saúde e Beleza   |" url="#" />
-						<p:menuitem value="|   Fitness   |" url="#" />
-						<p:menuitem value="|  Cursos e Aulas   |" url="#" />
-						<p:menuitem value="|   Quem somos   |" url="#" />
+						<p:menuitem value="|   Todas as ofertas   |"
+							action="#{principal.todasOfertas()}" />
+						<p:menuitem value="|   Restaurantes e Bares   |"
+							action="#{principal.restaurantesBares()}" />
+						<p:menuitem value="|   Saúde e Beleza   |"
+							action="#{principal.saudeBeleza()}" />
+						<p:menuitem value="|   Fitness   |"
+							action="#{principal.fitness()}" />
+						<p:menuitem value="|  Cursos e Aulas   |"
+							action="#{principal.cursoAulas()}" />
+						<p:menuitem value="|   Quem somos   |"
+							 />
 					</p:menubar>
 				</h:panelGrid>
 			</h:form>
@@ -106,14 +94,31 @@
 					</p:galleria>
 
 				</div>
-
+				<h:form onsubmit="#{validarLogin.deslogado()}">
+					<p:growl id="growl" sticky="true" showDetail="true" life="3000" />
+					<p:dialog header="Login" widgetVar="modalLoginPrincipal" resizable="false">
+						<h:panelGrid columns="2" cellpadding="5">
+							<h:outputLabel for="username" value="Email:" />
+							<p:inputText id="username" value="#{validarLogin.c.email}"
+								required="true" label="username" />
+							<h:outputLabel for="password" value="Senha:" />
+							<p:password id="password" value="#{validarLogin.c.senha}"
+								required="true" label="password" />
+							<f:facet name="footer">
+								<p:commandButton value="Login" update="growl"
+									action="#{validarLogin.validar()}"
+									oncomplete="handleLoginRequest(xhr, status, args)" />
+							</f:facet>
+						</h:panelGrid>
+					</p:dialog>
+				</h:form>
 				<div class="ui-grid-col-6" align="center">
 
 					<h:panelGrid columns="1" styleClass="principal">
 						<h:form styleClass="principal">
 
 							<p:selectOneListbox id="advanced" value="#{principal.produto}"
-								converter="produtoConverter" var="p" filter="true"
+								converter="produtoConverter" var="p" filter="true" rendered="true"
 								styleClass="principal" filterMatchMode="contains">
 								<f:selectItems value="#{principal.produtoOferta}" var="prod"
 									itemLabel="#{prod.nomeProduto}" itemValue="#{prod}" />
@@ -141,7 +146,8 @@
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
 														<br />
-														<p:outputLabel value="#{principal.tipoDeProduto(p.tipoProduto.opc)}" />
+														<p:outputLabel
+															value="#{principal.tipoDeProduto(p.tipoProduto)}" />
 													</div>
 												</div>
 												<br />
@@ -178,8 +184,8 @@
 														<p:outputLabel id="relogio" value="#{principal.d}">
 															<f:convertDateTime pattern="HH:mm:ss" />
 														</p:outputLabel>
-														<p:poll interval="1"
-															listener="#{principal.tempoRestante(p.id)}" update="relogio"></p:poll>
+														<!--  <p:poll interval="1"
+															listener="#{principal.tempoRestante(p.id)}" update="relogio"></p:poll>-->
 													</div>
 												</div>
 											</div>

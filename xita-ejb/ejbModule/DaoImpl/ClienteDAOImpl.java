@@ -9,6 +9,8 @@ import javax.persistence.Query;
 
 import Dao.ClienteDAO;
 import Model.Cliente;
+import Model.Ofertante;
+import Model.Sessao;
 
 @Stateless
 public class ClienteDAOImpl implements ClienteDAO{
@@ -74,18 +76,21 @@ public class ClienteDAOImpl implements ClienteDAO{
 	}
 
 	@Override
-	public Long validarCliente(Cliente c) {
-		if(c.getEmail().equals(null) && c.getSenha().equals(null)){
-			return (long) -1;
+	public Sessao validarCliente(String email,String senha) {
+		if(email.equals(null) && senha.equals(null)){
+			return null;
 		}
 		
-		Query query = em.createQuery("SELECT c FROM Cliente c WHERE c.email = '" + c.getEmail()+"'");
-		List<Cliente> rSenha = (List<Cliente>)query.getResultList();
-		
-		if(rSenha.get(0).getSenha().equals(c.getSenha())){			
-			return rSenha.get(0).getId();
+		Query query = em.createQuery("SELECT c FROM Cliente c WHERE c.email = '" + email);
+		Cliente cliente = (Cliente) query.getSingleResult();
+		Sessao s = new Sessao();
+		if(cliente.getSenha().equals(senha)){		
+			s.setId(cliente.getId());
+			s.setNome(cliente.getNome());
+			s.setTipoUsuario("CLIENTE");
+			return s;
 		}
-		return (long)-1;
+		return null;
 	}
 
 }

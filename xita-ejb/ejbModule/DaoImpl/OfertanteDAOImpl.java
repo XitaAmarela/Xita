@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import Dao.OfertanteDAO;
 import Model.Cliente;
 import Model.Ofertante;
+import Model.Sessao;
 
 @Stateless
 public class OfertanteDAOImpl implements OfertanteDAO{
@@ -76,6 +77,23 @@ public class OfertanteDAOImpl implements OfertanteDAO{
 			return null;
 		}
 			return this.persist(ofertante);
+	}
+	@Override
+	public Sessao validarOfertante(String email, String senha) {
+		if(email.equals(null) && senha.equals(null)){
+			return null;
+		}
+		
+		Query query = em.createQuery("SELECT f FROM Ofertante f WHERE f.email = " + email);
+		Ofertante ofertante = (Ofertante) query.getSingleResult();
+		Sessao s = new Sessao();
+		if(ofertante.getSenha().equals(senha)){		
+			s.setId(ofertante.getId());
+			s.setNome(ofertante.getNome());
+			s.setTipoUsuario("OFERTANTE");
+			return s;
+		}
+		return null;
 	}
 
 }

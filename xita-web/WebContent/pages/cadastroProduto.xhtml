@@ -32,8 +32,8 @@
 
 					</p:button>
 					<div>
-						<h:outputLabel for="name" value="Fulano" />
-						<h:outputLabel for="name" value="Bem Vindo!" />
+						<h:outputLabel value="Fulano" />
+						<h:outputLabel  value="Bem Vindo!" />
 					</div>
 				</h:panelGrid>
 
@@ -41,7 +41,7 @@
 
 			</h:panelGrid>
 
-			<h:form>
+			<h:form >
 
 				<h:panelGrid columns="" style="width:100%;"
 					columnClasses="logo,detail">
@@ -77,7 +77,7 @@
 													<p:graphicImage value="#{uploadMB.image}" id="foto"
 														cache="false">
 														<f:param name="fotoId"
-															value="#{(cadastroProdutoMB.imagem!=null?cadastroProdutoMB.imagem.id:1)}" />
+															value="#{(cadastroProdutoMB.imagem!=null?cadastroProdutoMB.imagem.id:null)}" />
 													</p:graphicImage>
 
 												</h:panelGrid>
@@ -111,7 +111,7 @@
 
 										</h:panelGrid>
 
-										<h:outputLabel for="tempoPromoção" value="Tempo da Promoção"
+										<h:outputLabel  value="Tempo da Promoção"
 											style="font-weight:bold" />
 
 										<h:panelGrid columns="1">
@@ -126,7 +126,7 @@
 
 
 										</h:panelGrid>
-										<h:outputLabel for="detalhes" value="Detalhes:"
+										<h:outputLabel  value="Detalhes:"
 											style="font-weight:bold" />
 										<p:inputTextarea rows="6" cols="33"
 											value="#{cadastroProdutoMB.produto.descricao}" />

@@ -16,96 +16,107 @@ import javax.servlet.http.HttpSession;
 
 import Dao.ProdutoOfertaDAO;
 import Model.ProdutoOferta;
+
 @ManagedBean
 public class Principal {
 
-	@ManagedProperty(value="#{param.id}")
-    private int id;
+	@ManagedProperty(value = "#{param.id}")
+	private int id;
 	private int option;
 	private ProdutoOferta produto;
 	private List<ProdutoOferta> produtoOferta;
 	@Inject
 	private Conversation conversation;
-	private Date  d = new Date();
+	private Date d = new Date();
 	private int i = 0;
 
-	
-	  FacesContext context = FacesContext.getCurrentInstance();     
-	    HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-	
+	FacesContext context = FacesContext.getCurrentInstance();
+	HttpSession session = (HttpSession) context.getExternalContext()
+			.getSession(false);
+
 	@EJB
 	private ProdutoOfertaDAO produtoOfertaDAO;
 
-	
-	
 	@PostConstruct
 	public void init() {
-		
-		produtoOferta = produtoOfertaDAO.listAll();
+		int menu = (int) (session.getAttribute("menu") != null ? session
+				.getAttribute("menu") : 1);
+		if (menu == 2) {
+			produtoOferta = produtoOfertaDAO.listarProdutoPorTipo(new Long(2));
+		} else if (menu == 3) {
+			produtoOferta = produtoOfertaDAO.listarProdutoPorTipo(new Long(3));
+		} else if (menu == 4) {
+			produtoOferta = produtoOfertaDAO.listarProdutoPorTipo(new Long(4));
+		} else if (menu == 5) {
+			produtoOferta = produtoOfertaDAO.listarProdutoPorTipo(new Long(5));
+		} else{
+			produtoOferta = produtoOfertaDAO.listAll();
+		}
 	}
-	public void initConversation(){
-	    if (!FacesContext.getCurrentInstance().isPostback() 
-	      && conversation.isTransient()) {
-	      conversation.begin();
-	    }
-	  }
-	
-	public String detalhes(){
+
+	public void initConversation() {
+		if (!FacesContext.getCurrentInstance().isPostback()
+				&& conversation.isTransient()) {
+			conversation.begin();
+		}
+	}
+
+	public String detalhes() {
 		session.setAttribute("idPropaganda", id);
 		return "detalhesProduto?faces-redirect=true";
-		
+
 	}
 
-	public Date tempoRestante(long id){
-		Long mm = new Date().getTime() ;
+	public Date tempoRestante(long id) {
+		Long mm = new Date().getTime();
 		for (int i = 0; i < produtoOferta.size(); i++) {
-			mm = new Long(produtoOferta.get(i).getTempoPropaganda().getTime() - new Date().getTime());	
+			mm = new Long(produtoOferta.get(i).getTempoPropaganda().getTime()
+					- new Date().getTime());
 		}
-		
+
 		Date a = new Date(mm);
 		i++;
-		if(i==produtoOferta.size())
-		i=0;
+		if (i == produtoOferta.size())
+			i = 0;
 		setD(a);
 		return getD();
-	}	
+	}
 
-	
-	public String tipoDeProduto(int l){
+	public String tipoDeProduto(int l) {
 		if (l == 2) {
 			return "Restaurantes e Bares";
-		}else if (l == 3) {
+		} else if (l == 3) {
 			return "Saúde e Beleza";
-		}else if (l == 4) {
+		} else if (l == 4) {
 			return "Fitness";
-		}else{
+		} else {
 			return "Cursos e Aulas";
 		}
 	}
 
-
-	public void todasOfertas() {
-
+	public String todasOfertas() {
+		session.setAttribute("menu", 1);
+		return "principal?faces-redirect=true";
 	}
 
-	public void restaurantesBares() {
-
+	public String restaurantesBares() {
+		session.setAttribute("menu", 2);
+		return "principal?faces-redirect=true";
 	}
 
-	public void saudeBeleza() {
-
+	public String saudeBeleza() {
+		session.setAttribute("menu", 3);
+		return "principal?faces-redirect=true";
 	}
 
-	public void fitness() {
-
+	public String fitness() {
+		session.setAttribute("menu", 4);
+		return "principal?faces-redirect=true";
 	}
 
-	public void cursoAulas() {
-
-	}
-
-	public void quemSomos() {
-
+	public String cursoAulas() {
+		session.setAttribute("menu", 5);
+		return "principal?faces-redirect=true";
 	}
 
 	public int getOption() {
@@ -160,12 +171,12 @@ public class Principal {
 		this.session = session;
 	}
 
-	public Date getD() {	
+	public Date getD() {
 		return d;
 	}
+
 	public void setD(Date d) {
 		this.d = d;
 	}
-
 
 }

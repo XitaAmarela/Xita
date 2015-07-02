@@ -34,9 +34,9 @@ public class ProdutoOferta implements Serializable {
 	private String nomeProduto;
 	@NotNull
 	private String descricao;
-	@Enumerated(EnumType.ORDINAL)
+	
 	@NotNull
-	private enumTipoProduto tipoProduto;
+	private String tipoProduto;
 	@NotNull
 	private int quantidadeEmEstoque;
 	private int quantidadeVendidos;
@@ -144,11 +144,11 @@ public class ProdutoOferta implements Serializable {
 		this.precoComDesconto = precoComDesconto;
 	}
 
-	public enumTipoProduto getTipoProduto() {
+	public String getTipoProduto() {
 		return tipoProduto;
 	}
 
-	public void setTipoProduto(enumTipoProduto tipoProduto) {
+	public void setTipoProduto(String tipoProduto) {
 		this.tipoProduto = tipoProduto;
 	}
 

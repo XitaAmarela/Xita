@@ -63,18 +63,12 @@ public class ProdutoOfertaDAOImpl implements ProdutoOfertaDAO {
 	@Override
 	public List<ProdutoOferta> listarProdutoPorOfertante(Long id) {
 		Query query = em
-				.createQuery("SELECT p FROM ProdutoOferta p WHERE ofertante_id = "
+				.createQuery("SELECT p FROM ProdutoOferta p WHERE p.ofertante_id = "
 						+ id);
 		return (List<ProdutoOferta>) query.getResultList();
 	}
 
-	@Override
-	public List<ProdutoOferta> listarProdutoPorTipo(int opc) {
-		Query query = em
-				.createQuery("SELECT p FROM ProdutoOferta p WHERE tipoProduto = "
-						+ opc);
-		return (List<ProdutoOferta>) query.getResultList();
-	}
+	
 
 	@Override
 	public List<ProdutoOferta> listarProdutosPorCompraDeCliente(Cliente cliente) {
@@ -102,6 +96,16 @@ public class ProdutoOfertaDAOImpl implements ProdutoOfertaDAO {
 		}
 		
 		return this.persist(produtoOferta);
+	}
+
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<ProdutoOferta> listarProdutoPorTipo(Long opc) {
+		Query query = em
+				.createQuery("SELECT p FROM ProdutoOferta p WHERE p.tipoProduto = '"
+						+ opc+ "'");
+		return (List<ProdutoOferta>) query.getResultList();
 	}
 
 }
