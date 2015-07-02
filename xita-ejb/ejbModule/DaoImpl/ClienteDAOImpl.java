@@ -81,9 +81,10 @@ public class ClienteDAOImpl implements ClienteDAO{
 			return null;
 		}
 		
-		Query query = em.createQuery("SELECT c FROM Cliente c WHERE c.email = '" + email);
+		Query query = em.createQuery("SELECT c FROM Cliente c WHERE c.email = '" + email+ "'");
 		Cliente cliente = (Cliente) query.getSingleResult();
 		Sessao s = new Sessao();
+		if(cliente != null)
 		if(cliente.getSenha().equals(senha)){		
 			s.setId(cliente.getId());
 			s.setNome(cliente.getNome());
