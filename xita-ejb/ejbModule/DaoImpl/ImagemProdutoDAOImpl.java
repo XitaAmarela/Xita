@@ -27,7 +27,7 @@ public class ImagemProdutoDAOImpl implements ImagemProdutoDAO{
 
 	@Override
 	public void delete(Long id) {
-		Query query = em.createQuery("DELETE FROM ImagemProduto i WHERE i.id = "+id);
+		Query query = em.createQuery("DELETE i FROM ImagemProduto i WHERE i.id = "+id);
 		query.executeUpdate();
 		
 	}
@@ -48,7 +48,8 @@ public class ImagemProdutoDAOImpl implements ImagemProdutoDAO{
 	public ImagemProduto buscarPorId(Long id) {
 		//return em.find(ImagemProduto.class, id);
 		Query query = em.createQuery("SELECT i FROM ImagemProduto i WHERE produto_id = "+id);
-		return (ImagemProduto) query.getSingleResult();
+		ImagemProduto imagem = (ImagemProduto) query.getSingleResult();
+		return em.find(ImagemProduto.class, imagem.getId());
 	}
     
 	@Override
