@@ -11,7 +11,8 @@
 			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
 				styleClass="gridcabecalho">
 
-				<h:panelGrid columns="1" style="text-align:justific">
+				<h:panelGrid columns="1" style="text-align:justific"
+					styleClass="cabecalho">
 					<p:graphicImage value="../imagens/xitaAmarelabanner.png"></p:graphicImage>
 
 					<!-- <h3 style="background: yellow;">Xita Amarela</h3> -->
@@ -19,21 +20,19 @@
 
 
 
-				<h:panelGrid columns="2" sclass="ui-grid-responsive"
+				<h:panelGrid columns="3" sclass="ui-grid-responsive"
 					style="float:right">
-					<p:button value="Configuração" icon="ui-icon-arrow-4-diag">
+					<p:button value="Configuração" icon="ui-icon-wrench">
 
 					</p:button>
 
-					<p:commandButton value="Sair" />
+					<p:commandButton value="Sair" icon="ui-icon-power" />
 					<br> </br>
 					<br> </br>
-					<p:button value="Voltar" icon="ui-icon-arrowreturnthick-1-w">
 
-					</p:button>
 					<div>
+						<h:outputLabel for="name" value="Bem Vindo, " />
 						<h:outputLabel for="name" value="Fulano" />
-						<h:outputLabel for="name" value="Bem Vindo!" />
 					</div>
 				</h:panelGrid>
 
@@ -53,20 +52,20 @@
 
 							<p:tabView>
 
-								<p:tab title="Cadastro Produto">
-									<p:button value="Visualizar" icon="ui-icon-search"
-										style="float:right">
+								<p:tab title="Cadastro de Produto">
 
-									</p:button>
+									<!-- <p:button value="Visualizar" icon="ui-icon-search"
+										style="float:right">
+									</p:button> -->
+
 									<h:panelGrid id="gridTitulo" columns="1">
-										<h:outputLabel for="titulo" value="Titulo:"
+										<h:outputLabel for="titulo" value="Título:"
 											style="font-weight:bold" />
 										<p:inputText id="titulo" label="titulo"
 											value="#{cadastroProdutoMB.produto.nomeProduto}" />
-
+										<br></br>
 										<h:form>
-											<p:panel header="Imagem" footer="Eng Web II"
-												toggleable="true">
+											<p:panel header="Imagem" toggleable="true">
 												<h:panelGrid columns="1" cellpadding="5">
 													<p:fileUpload
 														fileUploadListener="#{uploadMB.handleFileUpload}"
@@ -84,54 +83,61 @@
 
 											</p:panel>
 										</h:form>
+										<br></br>
 										<h:panelGrid columns="4">
-											<h:outputLabel for="valor" value="Valor"
+											<h:outputLabel for="valor" value="Valor:"
 												style="font-weight:bold" />
 											<p:inputText id="valor" label="Valor"
 												style="width:50px!important"
 												value="#{cadastroProdutoMB.produto.preco}" />
-											<h:outputLabel for="desconto" value="Desconto"
+
+											<h:outputLabel for="desconto" value="Desconto (%):"
 												style="font-weight:bold" />
 											<p:inputText id="desconto" label="Desconto"
 												style="width:50px!important"
 												value="#{cadastroProdutoMB.produto.porcentagemDesconto}" />
-											<p:outputLabel for="console" value="Tipo" style="font-weight:bold"/>
+
+											<p:outputLabel for="console" value="Tipo:"
+												style="font-weight:bold" />
 											<p:selectOneMenu id="console"
-												value="#{cadastroProdutoMB.produto.tipoProduto}" style="width:150px">
+												value="#{cadastroProdutoMB.produto.tipoProduto}"
+												style="width:150px">
 												<f:selectItem itemLabel="Restaurantes e Bares" itemValue="2" />
 												<f:selectItem itemLabel="Saúde e Beleza" itemValue="3" />
 												<f:selectItem itemLabel="Fitness" itemValue="4" />
 												<f:selectItem itemLabel="Cursos e Aulas" itemValue="5" />
 											</p:selectOneMenu>
-											<h:outputLabel for="quantidade" value="Quantidade"
+
+											<h:outputLabel for="quantidade" value="Quantidade:"
 												style="font-weight:bold" />
 											<p:inputText id="quantidade" label="Quantidade"
 												style="width:50px!important"
 												value="#{cadastroProdutoMB.produto.quantidadeEmEstoque}" />
-
+											<br></br>
 										</h:panelGrid>
 
-										<h:outputLabel for="tempoPromoção" value="Tempo da Promoção"
+										<h:outputLabel for="tempoPromoção" value="Tempo da Promoção:"
 											style="font-weight:bold" />
 
 										<h:panelGrid columns="1">
 
 											<h:panelGrid columns="1">
-												<h:outputLabel for="horas" value="Data:"
-													style="font-weight:bold" />
 												<p:calendar id="horas" label="Horas"
 													value="#{cadastroProdutoMB.produto.tempoPropaganda}"
 													pattern="dd-MM-yyyy" mask="true" />
 											</h:panelGrid>
 
-
+											<br></br>
 										</h:panelGrid>
 										<h:outputLabel for="detalhes" value="Detalhes:"
 											style="font-weight:bold" />
 										<p:inputTextarea rows="6" cols="33"
 											value="#{cadastroProdutoMB.produto.descricao}" />
-
-										<p:commandButton value="Cancelar"
+											<br></br>
+									</h:panelGrid>
+									
+									<h:panelGrid columns="2">
+									<p:commandButton value="Cancelar"
 											action="#{cadastroProdutoMB.cancelar()}" immediate="true"
 											icon="ui-icon-cancel"></p:commandButton>
 										<p:commandButton value="Salvar"
