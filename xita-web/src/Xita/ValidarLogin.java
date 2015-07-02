@@ -13,10 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import Dao.ClienteDAO;
+import Dao.OfertanteDAO;
 import Model.Cliente;
+import Model.Sessao;
 
-@ManagedBean(name="validarLogin")
-@ConversationScoped
+@ManagedBean
 public class ValidarLogin implements Serializable {
 
 	/**
@@ -25,39 +26,52 @@ public class ValidarLogin implements Serializable {
 	private static final long serialVersionUID = 6264700980019855212L;
 	@EJB
 	private ClienteDAO validarCliente;
+	@EJB
+	private OfertanteDAO validarOfertante;
 	@Inject
 	private Conversation conversation;
-	private String usuario, senha;
+
 	public FacesContext getContext() {
 		return context;
 	}
 
 	Cliente c;
-	private Long idClienteSessao;
-	
-	   FacesContext context = FacesContext.getCurrentInstance();     
-	    HttpSession session = (HttpSession) context.getExternalContext().getSession(false);
-	
+	private Sessao sessao;
+
+	FacesContext context = FacesContext.getCurrentInstance();
+	HttpSession session = (HttpSession) context.getExternalContext()
+			.getSession(false);
+
 	@PostConstruct
 	public void init() {
 		c = new Cliente();
-		idClienteSessao = new Long(-1);
+		sessao = new Sessao();
 	}
-	
-	public void initConversation(){
-	    if (!FacesContext.getCurrentInstance().isPostback() 
-	      && conversation.isTransient()) {
-	      conversation.begin();
-	    }
-	  }
-	
+
+	public void initConversation() {
+		if (!FacesContext.getCurrentInstance().isPostback()
+				&& conversation.isTransient()) {
+			conversation.begin();
+		}
+	}
+
 	public String validar() {
+		try {
+			sessao = validarCliente.validarCliente(c.getEmail(), c.getSenha());
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		if (sessao == null)
+			try {
+				sessao = validarOfertante.validarOfertante(c.getEmail(),
+						c.getSenha());
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
 
-		idClienteSessao = validarCliente.validarCliente(c);
-
-		if (idClienteSessao != -1) {
-			session.setAttribute("idClienteSessao", idClienteSessao);
-			return "principal?faces-redirect=true";
+		if (sessao.getId() != -1) {
+			session.setAttribute("sessao", sessao);
+			return "listaProdutosAdmin?faces-redirect=true";
 		} else {
 			return "destalhesProduto?faces-redirect=true";
 		}
@@ -69,26 +83,30 @@ public class ValidarLogin implements Serializable {
 		}
 
 	}
-	
+
 	public String deslogado() {
-		idClienteSessao =(Long) (session.getAttribute("idClienteSessao") != null?new Long(session.getAttribute("idClienteSessao")+""):new Long(-1));
-		if(idClienteSessao != null)
-			if(idClienteSessao != -1)
-			return "false";
-				return "true";
+		sessao = (Sessao) (session.getAttribute("sessao") != null ? session
+				.getAttribute("sessao") : new Sessao());
+		if (sessao != null)
+			if (sessao.getId() != null)
+				return "false";
+		return "true";
 	}
 
-	public FacesContext getFacesContext() {  
-        return FacesContext.getCurrentInstance();  
-    }  
-      
-    public HttpSession getSession() {  
-        return (HttpSession) getFacesContext().getExternalContext().getSession(false);  
-    }  
-      
-    public HttpServletRequest getRequestSession() {  
-        return (HttpServletRequest) getFacesContext().getExternalContext().getRequest();  
-    }  
+	public FacesContext getFacesContext() {
+		return FacesContext.getCurrentInstance();
+	}
+
+	public HttpSession getSession() {
+		return (HttpSession) getFacesContext().getExternalContext().getSession(
+				false);
+	}
+
+	public HttpServletRequest getRequestSession() {
+		return (HttpServletRequest) getFacesContext().getExternalContext()
+				.getRequest();
+	}
+
 	public Conversation getConversation() {
 		return conversation;
 	}
@@ -105,13 +123,6 @@ public class ValidarLogin implements Serializable {
 		this.c = c;
 	}
 
-	public Long getIdClienteSessao() {
-		return idClienteSessao;
-	}
-
-	public void setIdClienteSessao(Long idClienteSessao) {
-		this.idClienteSessao = idClienteSessao;
-	}
 	public void setContext(FacesContext context) {
 		this.context = context;
 	}
@@ -119,23 +130,5 @@ public class ValidarLogin implements Serializable {
 	public void setSession(HttpSession session) {
 		this.session = session;
 	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-
-
 
 }

@@ -21,13 +21,11 @@ public class ListaProdutosCliente {
     
     @EJB
     private ProdutoOfertaDAO produtoOfertaDAO;
-    @EJB
-    private ImagemProdutoDAO imagemProdutoDAO;
+    
      
     @PostConstruct
     public void init() {
        produtosOfertas = produtoOfertaDAO.listAll();
-       imagemProdutoDAO = (ImagemProdutoDAO) imagemProdutoDAO.listAll();
     }
 
 	public List<ProdutoOferta> getProdutosOfertas() {
@@ -46,12 +44,5 @@ public class ListaProdutosCliente {
 		this.produtoOfertaDAO = produtoOfertaDao;
 	}
 
-	public ImagemProdutoDAO getImagemProdutoDAO() {
-		return imagemProdutoDAO;
-	}
 
-	public void setImagemProdutoDAO(ImagemProdutoDAO imagemProdutoDAO) {
-		this.imagemProdutoDAO = imagemProdutoDAO;
-	}
-     
 }
