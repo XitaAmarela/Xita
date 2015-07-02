@@ -49,7 +49,7 @@
 				columnClasses="logo,detail">
 				<p:outputPanel>
 					<h:panelGrid columns="2" cellpadding="5">
-						<p:dataTable var="prod"
+						<p:dataTable id="tabela" var="prod"
 							value="#{listaProdutosCliente.produtosOfertas}">
 							<p:column headerText="Produto">
 								<h:outputText value="#{prod.nomeProduto}" />
@@ -90,9 +90,9 @@
 										<p:button value="Visualizar" icon="ui-icon-search">
 											<f:param name="productId" value="20" />
 										</p:button>
-										<p:button value="Excluir" icon="ui-icon-trash">
+										<p:commandButton value="Excluir" icon="ui-icon-trash" actionListener="#{listaProdutosCliente.excluirProdutoOfertante(prod)}" update="tabela">
 											<f:param name="productId" value="20" />
-										</p:button>
+										</p:commandButton>
 									</div>
 								</div>
 							</p:column>

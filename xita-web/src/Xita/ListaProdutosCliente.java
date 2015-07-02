@@ -10,6 +10,7 @@ import javax.faces.bean.ManagedBean;
 import Dao.ImagemProdutoDAO;
 import Dao.ProdutoOfertaDAO;
 import DaoImpl.ProdutoOfertaDAOImpl;
+import Model.ImagemProduto;
 import Model.ProdutoOferta;
  
 
@@ -18,16 +19,25 @@ import Model.ProdutoOferta;
 public class ListaProdutosCliente {
      
     private List<ProdutoOferta> produtosOfertas;
-    
+    private List<ImagemProduto>imagensOfertas;
+    @EJB
+    private ImagemProdutoDAO imagemDAO;
     @EJB
     private ProdutoOfertaDAO produtoOfertaDAO;
     
      
     @PostConstruct
     public void init() {
+    	setImagensOfertas(imagemDAO.listAll());
        produtosOfertas = produtoOfertaDAO.listAll();
     }
-
+    
+    public void excluirProdutoOfertante(ProdutoOferta produto){    	
+    	imagemDAO.delete(produto.getId());
+    	produtoOfertaDAO.delete(produto.getId());
+    	imagensOfertas = imagemDAO.listAll();
+    	produtosOfertas = produtoOfertaDAO.listAll();
+	}
 	public List<ProdutoOferta> getProdutosOfertas() {
 		return produtosOfertas;
 	}
@@ -42,6 +52,14 @@ public class ListaProdutosCliente {
 
 	public void setProdutoOfertaDAO(ProdutoOfertaDAO produtoOfertaDao) {
 		this.produtoOfertaDAO = produtoOfertaDao;
+	}
+
+	public List<ImagemProduto> getImagensOfertas() {
+		return imagensOfertas;
+	}
+
+	public void setImagensOfertas(List<ImagemProduto> imagensOfertas) {
+		this.imagensOfertas = imagensOfertas;
 	}
 
 

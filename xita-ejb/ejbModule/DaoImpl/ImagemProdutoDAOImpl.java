@@ -27,7 +27,7 @@ public class ImagemProdutoDAOImpl implements ImagemProdutoDAO{
 
 	@Override
 	public void delete(Long id) {
-		Query query = em.createQuery("DELETE i FROM ImagemProduto i WHERE i.id = "+id);
+		Query query = em.createQuery("DELETE FROM ImagemProduto WHERE produto_id = "+id);
 		query.executeUpdate();
 		
 	}
