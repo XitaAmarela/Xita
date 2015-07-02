@@ -125,7 +125,7 @@
 
 										<div class="ui-grid-row">
 											<div class="ui-grid-col">
-												<h:outputText value="#{p.nomeProduto}" />
+												<h:outputText value="#{p.nomeProduto}" style="font-size: 20px"/>
 											</div>
 										</div>
 										<div class="ui-grid-row">
@@ -141,17 +141,19 @@
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
 														<br />
-														<p:outputLabel value="#{principal.tipoDeProduto(p.tipoProduto.opc)}" />
+														<p:outputLabel value="#{principal.tipoDeProduto(p.tipoProduto.opc)}" style="font-size: 15px" />
 													</div>
 												</div>
 												<br />
 												<div class="ui-grid-row">
-													<div class="ui-grid-col-7">
+													<div class="ui-grid-col-7" style="color: red">
+														<p:outputLabel value="De: "/>
 														<p:outputLabel value="#{p.preco}" />
 													</div>
 
-													<div class="ui-grid-col-7">
-														<p:outputLabel value="#{p.precoComDesconto}" />
+													<div class="ui-grid-col-7" style="color: green">
+														<p:outputLabel value="Por: R$ "/>
+														<p:outputLabel value="#{p.precoComDesconto}" style="font-size: 30px"/>
 													</div>
 												</div>
 												<br />
@@ -166,18 +168,18 @@
 												<br />
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-7">
-														<p:outputLabel style="font-size: 12px"
-															value="tempo restante" />
+														<p:outputLabel style="font-size: 12px"	value="Tempo Restante" />
 													</div>
 												</div>
 												<div class="ui-grid-row">
 													<div class="ui-grid-col-1" >
 														<span class="ui-icon ui-icon-clock"> </span>
 													</div>
-													<div class="ui-grid-col-3">
-														<p:outputLabel id="relogio" value="#{principal.d}" style="font-size: 30px">
+
+													<div class="ui-grid-col-3" style="font-size: 30px">
+														<p:outputLabel id="relogio" value="#{principal.d}">
 															<f:convertDateTime pattern="HH:mm:ss" />
-														</p:outputLabel>
+														</p:outputLabel >
 														<p:poll interval="1"
 															listener="#{principal.tempoRestante(p.id)}" update="relogio"></p:poll>
 													</div>

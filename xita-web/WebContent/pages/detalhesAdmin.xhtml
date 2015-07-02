@@ -11,30 +11,29 @@
 			<h:panelGrid columns="3" border="1" class="ui-grid-responsive"
 				styleClass="gridcabecalho">
 
-				<h:panelGrid columns="1" style="text-align:justific">
-					<p:graphicImage value="../imagens/xitaAmarela.png"></p:graphicImage>
-
-					<h3 style="background: yellow;">Xita Amarela</h3>
-
-
+				<h:panelGrid columns="1" style="text-align:justific"
+					styleClass="cabecalho">
+					<p:graphicImage value="../imagens/xitaAmarelabanner.png"></p:graphicImage>
 
 				</h:panelGrid>
 				<h:panelGrid columns="1">
-					<h:panelGrid columns="2">
+					<h:panelGrid columns="2" styleClass="cabecalho">
 						<h:outputLabel for="totalDePropagandas"
-							value="Total de Propagandas" style="font-weight:bold" />
-						<p:inputText id="totalDePropagandas" label="Total de Propagandas"
-							style="width:200px!important" />
+							value="Total de Propagandas:" style="font-weight:bold" />
+						<p:outputLabel id="totalDePropagandas"
+							label="Total de Propagandas" style="width:20px!important"
+							value="5" />
 					</h:panelGrid>
-					<h:panelGrid columns="2">
+					<h:panelGrid columns="2" styleClass="cabecalho">
 						<h:outputLabel for="PropagandasRestantes"
-							value="PropagandasRestantes" style="font-weight:bold" />
-						<p:inputText id="propagandasRestantes"
-							label="PropagandasRestantes" style="width:200px!important" />
+							value="Total de Propagandas Restantes:" style="font-weight:bold" />
+						<p:outputLabel id="propagandasRestantes"
+							label="PropagandasRestantes" style="width:20px!important"
+							value="2" />
 					</h:panelGrid>
 
-
-					<p:button value="Comprar" icon="ui-icon-plus  ">
+					<br></br>
+					<p:button value="Comprar" icon="ui-icon-plus">
 					</p:button>
 
 				</h:panelGrid>
@@ -42,22 +41,25 @@
 
 
 				<h:panelGrid columns="2" sclass="ui-grid-responsive"
-					style="float:right">
-					<p:button value="Configuração" icon="ui-icon-arrow-4-diag">
+					style="float:right" styleClass="cabecalho">
+					<p:button value="Configuração" icon="ui-icon-wrench">
 
 					</p:button>
 
-					<p:commandButton value="Sair" />
+					<p:commandButton value="Sair" icon="ui-icon-power" />
 					<br> </br>
 					<br> </br>
 					<p:button value="Voltar" icon="ui-icon-arrowreturnthick-1-w">
 
 					</p:button>
-					<div>
-						<h:outputLabel for="name" value="Fulano" />
-						<h:outputLabel for="name" value="Bem Vindo!" />
-					</div>
+					<h:panelGrid styleClass="conteudo">
+						<div>
+							<h:outputLabel for="name" value="Bem Vindo, " />
+							<h:outputLabel for="name" value="Fulano" />
+						</div>
+					</h:panelGrid>
 				</h:panelGrid>
+
 
 
 
@@ -72,7 +74,8 @@
 									<div class="ui-grid ui-grid-responsive">
 										<div class="ui-grid-row">
 											<div class="ui-grid-col">
-												<h:outputText value="#{detalheProduto.produto.nomeProduto}" />
+												<h:outputText value="#{detalheProduto.produto.nomeProduto}"
+													style="font-weight:bold" />
 											</div>
 										</div>
 										<div class="ui-grid-row">
@@ -84,15 +87,20 @@
 
 
 													</div>
-													<h:panelGrid columns="1">
-														<h:outputLabel for="carregadorUniversal"
-															value="Carregador Universal" style="font-weight:bold" />
-														<p:inputTextarea rows="6" cols="33" />
-													</h:panelGrid>
+
+													<div class="ui-grid-col-12" style="text-align: center">
+														<p:column headerText="Foto" width="40%">
+															<p:graphicImage value="#{imagemMB.image}" cache="false">
+																<f:param name="fotoId" value="#{(p!=null?p.id:null)}" />
+															</p:graphicImage>
+														</p:column>
+
+													</div>
 													<h:panelGrid columns="1">
 														<h:outputLabel for="descricaoBreve"
 															value="Descrição Breve" style="font-weight:bold" />
-														<p:inputTextarea rows="6" cols="33" />
+														
+
 													</h:panelGrid>
 
 
