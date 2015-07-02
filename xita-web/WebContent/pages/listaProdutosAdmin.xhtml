@@ -40,10 +40,11 @@
 
 
 			</h:panelGrid>
+<h:form>
+			<p:commandButton style="margin:20px" value="Criar Propaganda" icon="ui-icon-plus" action="cadastroProduto?faces-redirect=true" >
 
-			<p:button value="Criar Propaganda" icon="ui-icon-plus">
-
-			</p:button>
+			</p:commandButton>
+			</h:form>
 			<h:panelGrid columns="" style="width:100%;text-align:center"
 				columnClasses="logo,detail">
 				<p:outputPanel>
@@ -77,8 +78,11 @@
 							<p:column headerText="Vendido">
 								<h:outputText value="#{prod.quantidadeVendidos}" />
 							</p:column>
-							<p:column headerText="Situação">
-								<h:outputText value="" />
+							<p:column headerText="Tempo Promoção">
+								<p:outputLabel id="relogio" value="#{prod.tempoPropaganda}">
+															<f:convertDateTime pattern="HH:mm:ss" />
+
+														</p:outputLabel >
 							</p:column>
 							<p:column headerText="">
 								<div class="ui-grid-row">

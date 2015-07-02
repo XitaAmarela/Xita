@@ -2,6 +2,7 @@ package Xita;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpSession;
 
 import Dao.ProdutoOfertaDAO;
 import Model.ProdutoOferta;
+import Model.Sessao;
  
 
  
@@ -25,14 +27,18 @@ public class listaProdutosAdmin {
     
     private List<ProdutoOferta> produtosOfertas = new ArrayList<ProdutoOferta>();
     
-    @EJB
+   
+	@EJB
     private ProdutoOfertaDAO produtoOfertaDAO;
     @Inject
-	private Conversation conversation; 
+	private Conversation conversation;
+    private Date d = new Date();
+	private int i = 0;
     
     @PostConstruct
     public void init() {
-       produtosOfertas = produtoOfertaDAO.listarProdutoPorOfertante(new Long(session.getAttribute("idClienteSessao")+""));
+    	Sessao s = (Sessao) session.getAttribute("sessao");
+       produtosOfertas = produtoOfertaDAO.listarProdutoPorOfertante(s.getId());
     }
     public void initConversation(){
 	    if (!FacesContext.getCurrentInstance().isPostback() 
@@ -40,6 +46,20 @@ public class listaProdutosAdmin {
 	      conversation.begin();
 	    }
 	  }
+    public Date tempoRestante(long id) {
+		Long mm = new Date().getTime();
+		for (int i = 0; i < produtosOfertas.size(); i++) {
+			mm = new Long(produtosOfertas.get(i).getTempoPropaganda().getTime()
+					- new Date().getTime());
+		}
+
+		Date a = new Date(mm);
+		i++;
+		if (i == produtosOfertas.size())
+			i = 0;
+		setD(a);
+		return getD();
+	}
 	public List<ProdutoOferta> getProdutosOfertas() {
 		return produtosOfertas;
 	}
@@ -73,5 +93,17 @@ public class listaProdutosAdmin {
 	public void setConversation(Conversation conversation) {
 		this.conversation = conversation;
 	}
+	public Date getD() {
+		return d;
+	}
+	public void setD(Date d) {
+		this.d = d;
+	}
+	 public int getI() {
+			return i;
+		}
+		public void setI(int i) {
+			this.i = i;
+		}
      
 }

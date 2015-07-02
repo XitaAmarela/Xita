@@ -22,6 +22,7 @@ import Enums.enumTipoProduto;
 import Model.ImagemProduto;
 import Model.Ofertante;
 import Model.ProdutoOferta;
+import Model.Sessao;
 
 @ManagedBean
 public class CadastroProdutoMB implements Serializable {
@@ -64,23 +65,21 @@ public class CadastroProdutoMB implements Serializable {
 
 
 	public String salvar(UploadedFile arquivo) {
-		Long idClienteSessao = (Long) (session.getAttribute("idClienteSessao") != null ? new Long(
-				session.getAttribute("idClienteSessao") + "") : new Long(-1));
-		if (idClienteSessao != null)
-			if (idClienteSessao != -1) {
+		Sessao sessao = (Sessao) (session.getAttribute("sessao") != null ? 
+				session.getAttribute("sessao") : new Sessao());
+		if (sessao != null)
+			if (sessao.getId() != null) {
 				Ofertante ofert = new Ofertante();
-				ofert.setId(idClienteSessao);
+				ofert.setId(sessao.getId());
 				produto.setOfertante(ofert);
 				produto.setPrecoComDesconto(new BigDecimal(produto.getPreco().doubleValue() * ((100 - produto.getPorcentagemDesconto().doubleValue())/100)));
 				produto = cadastroProduto.cadastrarProdutoOferta(produto);
 				if (arquivo != null) {
-
 					imagem.setContent(arquivo.getContents());
 					imagem.setNome(arquivo.getFileName());
 					imagem.setTipo(arquivo.getContentType());
 					imagem.setProduto(getProduto());
 					imagem = cadastroImagem.cadastrarImagemProduto(imagem);
-
 				}
 			}
 
