@@ -27,11 +27,11 @@ public class ValidarLogin implements Serializable {
 	private ClienteDAO validarCliente;
 	@Inject
 	private Conversation conversation;
+	private String usuario, senha;
 	public FacesContext getContext() {
 		return context;
 	}
 
-	
 	Cliente c;
 	private Long idClienteSessao;
 	
@@ -52,6 +52,7 @@ public class ValidarLogin implements Serializable {
 	  }
 	
 	public String validar() {
+
 		idClienteSessao = validarCliente.validarCliente(c);
 
 		if (idClienteSessao != -1) {
@@ -117,6 +118,22 @@ public class ValidarLogin implements Serializable {
 
 	public void setSession(HttpSession session) {
 		this.session = session;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 
