@@ -14,7 +14,7 @@
 					<!-- <h3 style="background: yellow;">Xita Amarela</h3> -->
 				</h:panelGrid>
 			</h:panelGrid>
-			<div class="ui-grid ui-grid-responsive" align="right">
+			<div class="ui-grid ui-grid-responsive" align="center">
 				<h:form>
 					<h:panelGrid columns="2">
 						<h:panelGrid columns="1">
@@ -80,14 +80,14 @@
 									<p:tab title="Sobre Sua conta">
 										<h:panelGrid id="grid" columns="2">
 											<h:panelGrid columns="1">
-												<h:outputLabel for="telFixo" value="Seu telefone fixo:"
+												<h:outputLabel for="telFixo" value="Telefone fixo:"
 													style="font-weight:bold" />
 												<p:inputText id="DDDTelFixo" required="true"
 													value="#{cadastroOfertanteMB.ofertante.telefone}"
 													label="DDDTelFixo" />
 											</h:panelGrid>
 											<h:panelGrid columns="1">
-												<h:outputLabel for="telFixo" value="Seu Celular:"
+												<h:outputLabel for="telFixo" value="Celular:"
 													style="font-weight:bold" />
 												<p:inputText id="telCel" required="true" label="telCel"
 													value="#{cadastroOfertanteMB.ofertante.telefoneCelular}" />
@@ -127,7 +127,7 @@
 						</h:panelGrid>
 					</h:panelGrid>
 					<dir style="float: right">
-						<p:commandButton value="Continuar"
+						<p:commandButton value="Continuar" icon="ui-icon-check"
 							action="#{cadastroOfertanteMB.salvar()}"></p:commandButton>
 					</dir>
 				</h:form>

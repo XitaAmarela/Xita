@@ -54,12 +54,14 @@ public class CadastroProdutoMB implements Serializable {
 		imagem = new ImagemProduto();
 	}
 
+
 	public void initConversation() {
 		if (!FacesContext.getCurrentInstance().isPostback()
 				&& conversation.isTransient()) {
-			conversation.begin();
 		}
-	}
+		}
+	
+
 
 	public String salvar(UploadedFile arquivo) {
 		Long idClienteSessao = (Long) (session.getAttribute("idClienteSessao") != null ? new Long(
